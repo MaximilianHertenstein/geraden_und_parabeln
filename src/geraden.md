@@ -8,7 +8,7 @@ toc: true
 Eine Gerade ist **gerade**.
 Wie mit dem Lineal gezogen.
 
-Wir machen **eine Sache nach der anderen** (Atomisierung – immer nur 1 Neues):
+Wir machen **eine Sache nach der anderen** (immer nur 1 Neues pro Schritt):
 Zuerst nur das Koordinatensystem.
 Dann nur die Tabelle.
 Dann nur die Steigung.
@@ -41,7 +41,7 @@ Ohne Bild. Nur aus dem Kopf. Dann weiter.
 const g0_q1 = view(Inputs.radio(["3 nach rechts, 2 nach oben", "3 nach oben, 2 nach rechts", "3 und 2 sind egal"], {label: "Was heißt (3 | 2)?"}));
 ```
 
-${g0_q1 === "3 nach rechts, 2 nach oben" ? "✅ **Richtig.** (x | y) – zuerst x." : g0_q1 ? "❌ Typischer Fehler: **x und y vertauscht.** Erste Zahl ist immer x (rechts). Lege dir den Satz zurecht: „x zuerst, x rechts"." : "⬜ Wähle eine Antwort."}
+${g0_q1 === "3 nach rechts, 2 nach oben" ? "✅ **Richtig.** (x | y) – zuerst x." : g0_q1 ? "❌ Typischer Fehler: **x und y vertauscht.** Erste Zahl ist immer x (rechts). Lege dir den Satz zurecht: „x zuerst, x rechts.“" : "⬜ Wähle eine Antwort."}
 
 ```js
 const g0_q2 = view(Inputs.radio(["(0 | 0), die Mitte", "(1 | 1)", "gibt es nicht"], {label: "Wie heißt der Punkt in der Mitte?"}));
@@ -120,8 +120,8 @@ Eine Gerade hat eine Gleichung. Sie heißt:
 
 **y = m · x + b**
 
-- **m** = die **Steigung**. Wie steil? Hoch oder runter? (Atom 1)
-- **b** = der **Startwert**. Wo startet die Linie auf der y-Achse? (Atom 2)
+- **m** = die **Steigung**. Wie steil? Hoch oder runter? (Schritt 1)
+- **b** = der **Startwert**. Wo startet die Linie auf der y-Achse? (Schritt 2)
 - **x** = du darfst einsetzen. **y** = kommt raus.
 
 </div>
@@ -130,7 +130,7 @@ Eine Gerade hat eine Gleichung. Sie heißt:
 
 Das heißt: Steigung m = 2. Startwert b = 1.
 
-Keine Angst. Wir schauen uns **m** und **b** einzeln an. Immer nur 1 Atom neu.
+Keine Angst. Wir schauen uns **m** und **b** einzeln an. Immer nur eine neue Sache auf einmal.
 
 ---
 
@@ -233,7 +233,7 @@ So lernt dein Gehirn den Unterschied – nicht durch Zufall, sondern durch Vergl
 
 ## 4. Die Steigung m – ganz ausführlich
 
-Das ist der wichtigste Teil. Nimm dir Zeit. Nur Atom m, b bleibt 0.
+Das ist der wichtigste Teil. Nimm dir Zeit. Nur m, b bleibt 0.
 
 ### 4a. Was fühlt sich die Steigung an?
 

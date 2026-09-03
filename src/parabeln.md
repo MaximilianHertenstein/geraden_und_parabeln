@@ -43,7 +43,7 @@ ${p0_q1 === "m = Steigung, b = Start auf y-Achse" ? "✅ **Richtig.** Das brauch
 const p0_q2 = view(Inputs.radio(["1", "-1", "-2"], {label: "2) Was ist (-1)²?"}));
 ```
 
-${p0_q2 === "1" ? "✅ **Richtig.** (-1)·(-1) = 1. **Minus mal minus = plus.** Das ist der wichtigste Rechen-Atom für Parabeln." : p0_q2 ? "❌ **Klassiker:** (-1)² = (-1)·(-1) = **1**, nicht -1. Minus mal minus gibt plus." : "⬜ Wähle eine Antwort."}
+${p0_q2 === "1" ? "✅ **Richtig.** (-1)·(-1) = 1. **Minus mal minus = plus.** Das ist die wichtigste Rechenregel für Parabeln." : p0_q2 ? "❌ **Klassiker:** (-1)² = (-1)·(-1) = **1**, nicht -1. Minus mal minus gibt plus." : "⬜ Wähle eine Antwort."}
 
 Wenn beide ✅ sind, weiter. Sonst erst wiederholen – das spart dir später Frust (Cognitive Load).
 
@@ -413,7 +413,7 @@ ${p4a_q1 === "S(-3 | 1)" ? "✅ **Richtig.** x+3 = x–(-3), also d=-3 = 3 nach 
 Manchmal hast du **y = a · x² + b · x + c** (Normalform).
 Du willst den Scheitel wissen, ohne zu zeichnen.
 
-Dafür gibt es eine **Formel**. Nur 2 Schritte (2 Atome, nacheinander):
+Dafür gibt es eine **Formel**. Nur 2 kleine Schritte nacheinander:
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
