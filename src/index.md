@@ -1,111 +1,151 @@
 ---
-toc: false
+title: Start – Geraden und Parabeln ganz einfach
+toc: true
 ---
 
-<div class="hero">
-  <h1>Geraden und Parabeln</h1>
-  <h2>Welcome to your new app! Edit&nbsp;<code style="font-size: 90%;">src/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+# Geraden und Parabeln – ganz einfach verstehen
+
+Hallo! Hier lernst du **zuerst Geraden**, **dann Parabeln**.
+
+Ganz langsam. Schritt für Schritt.
+Mit Bildern, die du selbst bewegen kannst.
+
+<div class="card" style="border-left: 6px solid #7c3aed;">
+
+**So lernst du hier – immer gleich. Das hilft deinem Gehirn:**
+
+1. 🔁 **Abrufen:** Ganz kurz wiederholen, was du schon kannst.
+2. 👀 **Ich zeige:** Du schaust ein fertiges Beispiel an. Nur schauen.
+3. 🔮 **Denke – Rate – Prüfe:** Du rätst zuerst. Dann bewegst du den Regler und prüfst.
+4. 🩺 **Mini-Check:** 1 Frage zum Ankreuzen. So merkst du sofort, ob es sitzt.
+
+Du musst nichts auswendig können.
+Du sollst **verstehen, was du siehst**.
+
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
+<div class="card" style="border-left: 6px solid #2563eb;">
+
+**Merke dir diese 3 Wörter:**
+
+- **x** geht nach **rechts**.
+- **y** geht nach **oben**.
+- Ein **Punkt** heißt immer **(x | y)**.
+
+Das brauchst du überall.
+
 </div>
+
+## Deine Ziele – das kannst du danach
+
+Wenn du hier fertig bist, kannst du:
+
+- [ ] einen Punkt wie (3 | 2) im Heft finden
+- [ ] eine Gerade mit **y = m · x + b** erklären und zeichnen
+- [ ] eine Parabel mit **Scheitel** und **Nullstellen** erklären
+
+Hake im Kopf ab. Wenn etwas noch nicht geht, gehe zurück.
+
+## Dein Lern-Weg
+
+### Schritt 1: Geraden
+
+Eine Gerade ist **gerade**. Wie ein Lineal-Strich.
+
+Du lernst in Mini-Schritten (immer nur 1 Neues):
+
+- Was ein Koordinatensystem ist
+- Was eine Wertetabelle ist
+- Was die **Steigung m** ist (ganz ausführlich)
+- Was der **Startwert b** ist
+- Was **y = m · x + b** bedeutet
+
+<a href="./geraden">👉 Jetzt mit Geraden starten</a>
+
+### Schritt 2: Parabeln
+
+Eine Parabel ist **gebogen**. Wie ein U. Wie ein Ball, der fliegt.
+
+Du lernst:
+
+- Wieder: Was eine Wertetabelle ist
+- Was **Normalform** und **Scheitelpunktform** sind
+- Was der **Scheitelpunkt** ist und wie man ihn ausrechnet
+- Was die **Diskriminante** ist
+- Was die **abc-Formel** ist
+
+<a href="./parabeln">👉 Danach mit Parabeln weiter machen</a>
+
+## Wichtig für alle Bilder
+
+Alle Bilder hier sind gleich:
+
+- Kästchen wie in deinem Heft
+- Mitte ist **0**
+- nach rechts wird **x größer**
+- nach oben wird **y größer**
 
 ---
 
-## Next steps
+## 🔮 Erst denken, dann schieben
 
-Here are some ideas of things you could try…
+Wir üben gleich die wichtigste Bewegung: **Denke – Rate – Prüfe.**
 
-<div class="grid grid-cols-4">
-  <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript#resize(render)"><code>resize</code></a>.
-  </div>
-  <div class="card">
-    Create a <a href="https://observablehq.com/framework/project-structure">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>src</code> folder.
-  </div>
-  <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/inputs/select"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
-  </div>
-  <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
-  </div>
-  <div class="card">
-    Import a <a href="https://observablehq.com/framework/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
-  </div>
-  <div class="card">
-    Ask for help, or share your work or ideas, on our <a href="https://github.com/observablehq/framework/discussions">GitHub discussions</a>.
-  </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
-</div>
+**Denke:** Die erste Zahl ist x (rechts). Die zweite Zahl ist y (oben).
 
-<style>
+Was bedeutet die **erste** Zahl bei (2 | 1)? Rate zuerst, dann prüfe unten im Bild:
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--sans-serif);
-  margin: 4rem 0 8rem;
-  text-wrap: balance;
-  text-align: center;
-}
+```js
+import * as Inputs from "npm:@observablehq/inputs";
+```
 
-.hero h1 {
-  margin: 1rem 0;
-  padding: 1rem 0;
-  max-width: none;
-  font-size: 14vw;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+```js
+const start_q1 = view(Inputs.radio(["2 nach rechts, 1 nach oben", "2 nach oben, 1 nach rechts", "egal, beides geht"], {label: "Was heißt (2 | 1)?"}));
+```
 
-.hero h2 {
-  margin: 0;
-  max-width: 34em;
-  font-size: 20px;
-  font-style: initial;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--theme-foreground-muted);
-}
+${start_q1 === "2 nach rechts, 1 nach oben" ? "✅ **Richtig.** Erste Zahl = x = rechts. Zweite Zahl = y = oben." : start_q1 ? "❌ **Noch nicht.** Typischer Fehler: x und y vertauscht. Merke: **(x | y)** – x kommt zuerst, x geht nach rechts. Stelle unten x=2 und y=1 ein und schaue." : "⬜ Wähle eine Antwort."}
 
-@media (min-width: 640px) {
-  .hero h1 {
-    font-size: 90px;
-  }
-}
+Jetzt **prüfe** mit dem Bild. Stelle genau das ein, was du oben angekreuzt hast. Es gehen auch **Kommazahlen**, zum Beispiel (2,5 | 1,5). Dann liegt der Punkt zwischen zwei Linien:
 
-</style>
+```js
+const px_start = view(Inputs.range([-5, 5], {value: 2, step: 0.5, label: "x – nach rechts"}));
+```
+
+```js
+const py_start = view(Inputs.range([-5, 5], {value: 1, step: 0.5, label: "y – nach oben"}));
+```
+
+```js
+display(Plot.plot({
+  width,
+  aspectRatio: 1,
+  x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
+  y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
+  marks: [
+    Plot.ruleX([0], {strokeWidth: 2}),
+    Plot.ruleY([0], {strokeWidth: 2}),
+    Plot.dot([{x: px_start, y: py_start}], {x: "x", y: "y", r: 8, fill: "#2563eb"}),
+    Plot.text([{x: px_start, y: py_start, t: `(${String(px_start).replace(".", ",")} | ${String(py_start).replace(".", ",")})`}], {x: "x", y: "y", text: "t", dy: -18, fontSize: 16, fontWeight: "bold"})
+  ]
+}))
+```
+
+Du siehst: Der Punkt heißt **(${String(px_start).replace(".", ",")} | ${String(py_start).replace(".", ",")})**.
+
+Erste Zahl = x. Zweite Zahl = y.
+
+**Erkläre in eigenen Worten:** Sage laut (oder im Heft): „x geht nach …, y geht nach …". Erst dann weiter.
+
+---
+
+## 🩺 Mini-Check zum Start
+
+```js
+const start_q2 = view(Inputs.radio(["genau auf einer Kreuzung", "mitten im Kästchen, zwischen den Linien", "das geht gar nicht"], {label: "Wo liegt (2,5 | 1,5)?"}));
+```
+
+${start_q2 === "mitten im Kästchen, zwischen den Linien" ? "✅ **Richtig.** Kommazahlen liegen zwischen den Linien. Darum gibt es hier halbe Schritte." : start_q2 ? "❌ Schau noch einmal: Stelle oben x=2,5 und y=1,5 ein. Liegt der Punkt auf einer Kreuzung oder dazwischen?" : "⬜ Wähle eine Antwort."}
+
+---
+
+Bereit? Dann gehe zu [Geraden](./geraden). Dort beginnt jeder Abschnitt mit 🔁 Abrufen.
