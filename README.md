@@ -1,5 +1,8 @@
 # Geraden und Parabeln
 
+🌐 **Live-Seite (GitHub Pages):** <https://maximilianhertenstein.github.io/geraden_und_parabeln/>
+💻 **Repo:** <https://github.com/MaximilianHertenstein/geraden_und_parabeln>
+
 This is an [Observable Framework](https://observablehq.com/framework/) app. To install the required dependencies, run:
 
 ```
