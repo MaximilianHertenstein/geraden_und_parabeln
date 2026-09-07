@@ -11,14 +11,12 @@ Du arbeitest langsam und Schritt für Schritt, mit Bildern, die du selbst bewegs
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**So arbeitest du auf jeder Seite:**
+**Ablauf auf jeder Seite:**
 
-1. 🔁 **Abrufen:** Ganz kurz wiederholen, was du schon kannst.
-2. 👀 **Ich zeige:** Du schaust dir ein fertiges Beispiel an. Nur lesen.
-3. 🔮 **Denke – Rate – Prüfe:** Du rätst zuerst. Dann bewegst du den Regler und prüfst.
-4. 🩺 **Mini-Check:** 1 Frage zum Ankreuzen. Du siehst sofort, ob es sitzt.
-
-Du sollst **verstehen, was du siehst**.
+1. 🔁 **Abrufen:** Kurz wiederholen, was schon ging.
+2. 👀 **Ich zeige:** Fertiges Beispiel, nur lesen.
+3. 🔮 **Denke – Rate – Prüfe:** Erst raten, dann Regler bewegen.
+4. 🩺 **Mini-Check:** 1 Frage. Du siehst sofort, wo du stehst.
 
 </div>
 
@@ -44,7 +42,7 @@ Wenn du hier fertig bist, kannst du:
 - [ ] eine Gerade mit **y = m · x + b** erklären und mit 2 Punkten zeichnen
 - [ ] eine Parabel mit **Scheitel** und **Nullstellen** erklären und prüfen
 
-Sage jedes Ziel laut in einem Satz. Wenn ein Satz noch nicht geht, gehe zurück.
+Kreuz im Kopf an – was geht schon? Der Rest kommt auf den nächsten Seiten.
 
 ## Dein Lern-Weg
 
@@ -89,7 +87,7 @@ Alle Bilder hier sind gleich:
 
 ## Erst denken, dann schieben
 
-Wir üben jetzt den Ablauf, den du überall brauchst: **Denke – Rate – Prüfe.**
+Der Ablauf hier: **Denke – Rate – Prüfe.**
 
 **Denke:** Die erste Zahl ist x (rechts). Die zweite Zahl ist y (oben).
 
@@ -104,6 +102,12 @@ const start_q1 = view(Inputs.radio(["2 nach rechts, 1 nach oben", "2 nach oben, 
 ```
 
 ${start_q1 === "2 nach rechts, 1 nach oben" ? "✅ **Richtig.** Erste Zahl = x = rechts. Zweite Zahl = y = oben." : start_q1 ? "❌ **Noch nicht.** Typischer Fehler: x und y vertauscht. Merke: **(x | y)** – x kommt zuerst, x geht nach rechts. Stelle unten x=2 und y=1 ein und schaue." : "⬜ Wähle eine Antwort."}
+
+```js
+const start_conf = view(Inputs.radio(["sicher", "eher geraten"], {label: "Wie sicher war das?"}));
+```
+
+${start_conf === "sicher" ? "Okay. Dann prüf unten kurz, ob es stimmt." : start_conf ? "Geraten ist okay. Prüf unten extra genau." : "⬜ Kurz ankreuzen."}
 
 Jetzt **prüfe** mit dem Bild. Stelle genau das ein, was du oben angekreuzt hast. Es gehen auch **Kommazahlen**, zum Beispiel (2,5 | 1,5). Dann liegt der Punkt zwischen zwei Linien:
 
@@ -134,7 +138,7 @@ Du siehst: Der Punkt heißt **(${String(px_start).replace(".", ",")} | ${String(
 
 Erste Zahl = x. Zweite Zahl = y.
 
-**Erkläre in eigenen Worten:** Sage laut (oder im Heft): „x geht nach …, y geht nach …". Erst dann weiter.
+Kurzer Check: Kannst du sagen „x geht nach …, y geht nach …"? Dann weiter.
 
 ---
 
@@ -150,8 +154,8 @@ ${start_q2 === "mitten im Kästchen, zwischen den Linien" ? "✅ **Richtig.** Ko
 
 <div class="card" style="border-left: 6px solid #16a34a;">
 
-**Ins Heft:** Zeichne ein kleines Koordinatensystem von -3 bis 3. Trage (2 | 1) und (2,5 | 1,5) ein. Schreibe darunter: „x geht nach rechts, y geht nach oben. (x | y)."
+**Fürs Heft:** Kleines Koordinatensystem von -3 bis 3. Trage (2 | 1) und (2,5 | 1,5) ein. Darunter: „x nach rechts, y nach oben. (x | y)."
 
 </div>
 
-Bereit? Dann gehe zu [Geraden](./geraden). Dort beginnt jeder Abschnitt mit Abrufen.
+Bereit? Dann weiter zu [Geraden](./geraden).

@@ -15,7 +15,7 @@ Dann nur der Startwert.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**So arbeitest du in jedem Abschnitt:**
+**Ablauf in jedem Abschnitt:**
 
 1. 🔁 **Abrufen** – 1 kurze Frage zu vorher.
 2. 👀 **Ich zeige** – fertiges Beispiel, nur lesen.
@@ -34,13 +34,13 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 ## 0. Abrufen – was du vom Start kannst
 
-Mache das ohne Bild, nur aus dem Kopf. Dann gehe weiter.
+Ohne Bild – nur aus dem Kopf.
 
 ```js
 const g0_q1 = view(Inputs.radio(["3 nach rechts, 2 nach oben", "3 nach oben, 2 nach rechts", "3 und 2 sind egal"], {label: "Was heißt (3 | 2)?"}));
 ```
 
-${g0_q1 === "3 nach rechts, 2 nach oben" ? "✅ **Richtig.** (x | y) – zuerst x." : g0_q1 ? "❌ Typischer Fehler: **x und y vertauscht.** Erste Zahl ist immer x (rechts). Lege dir den Satz zurecht: „x zuerst, x rechts.“" : "⬜ Wähle eine Antwort."}
+${g0_q1 === "3 nach rechts, 2 nach oben" ? "✅ **Richtig.** (x | y) – zuerst x." : g0_q1 ? "❌ Typischer Fehler: **x und y vertauscht.** Erste Zahl ist immer x (rechts). Satz zum Merken: „x zuerst, x rechts.“" : "⬜ Wähle eine Antwort."}
 
 ```js
 const g0_q2 = view(Inputs.radio(["(0 | 0), die Mitte", "(1 | 1)", "gibt es nicht"], {label: "Wie heißt der Punkt in der Mitte?"}));
@@ -96,7 +96,7 @@ display(Plot.plot({
 **Merke:**
 Der Punkt ist jetzt bei **(${String(gx).replace(".", ",")} | ${String(gy).replace(".", ",")})**.
 Erste Zahl ist immer x. Zweite Zahl ist immer y.
-**Erkläre:** Sage laut: „Ich gehe zuerst x nach rechts, dann y nach oben."
+Check: Kannst du sagen „Ich gehe zuerst x nach rechts, dann y nach oben"?
 
 </div>
 
@@ -162,7 +162,7 @@ Rechne: y = 2 · (-1) + 1 = -2 + 1 = -1. Punkt: (-1 | -1).
 
 So geht es immer: **einsetzen – mal rechnen – plus rechnen – fertig.**
 
-✏️ **Du bist dran (Lücke):** Decke die Lösung ab. Rechne x = 2 im Kopf: y = 2 · 2 + 1 = ? Dann erst weiterlesen und mit der Tabelle prüfen. Lösung: y = 5, Punkt (2 | 5).
+✏️ **Du bist dran:** Halt die Lösung zu. Rechne x = 2 im Kopf: y = 2 · 2 + 1 = ? Rate zuerst, dann check unten mit der Tabelle.
 
 🩺 **Mini-Check:**
 
@@ -219,11 +219,14 @@ Was siehst du?
 **Übungsreihe (nur 1 Sache ändert sich):**
 
 1. Stelle **m=1, b=1** ein. Merke dir das Bild.
-2. 🔮 **Rate:** Was passiert bei **m=2, b=1**? Steiler oder flacher? Dann stelle ein und **prüfe**.
-3. 🔮 **Rate:** Was passiert bei **m=2, b=3**? Hoch oder runter? Dann stelle ein und **prüfe**.
-4. **Erkläre:** Was ändert m? Was ändert b? Sage 2 Sätze.
+2. 🔮 **Rate:** Was passiert bei **m=2, b=1**? Steiler oder flacher? Dann stelle ein und **prüfe**. Was blieb gleich? Was wurde anders?
+3. 🔮 **Rate:** Was passiert bei **m=2, b=3**? Hoch oder runter? Dann stelle ein und **prüfe**. Was blieb gleich? Was wurde anders?
 
-Du vergleichst 2 Bilder. So siehst du den Unterschied.
+```js
+const g_tab_reflect = view(Inputs.radio(["m macht steil/flach, b schiebt hoch/runter", "m schiebt hoch/runter, b macht steil/flach"], {label: "Was stimmt?"}));
+```
+
+${g_tab_reflect === "m macht steil/flach, b schiebt hoch/runter" ? "✅ **Genau.** m = steil/flach + hoch/runter. b = nur hoch/runter." : g_tab_reflect ? "❌ Dreh es um: Schau oben – bei m=1→2 wurde es steiler, bei b=1→3 rutschte es nur hoch." : "⬜ Wähle eine Antwort."}
 
 </div>
 
@@ -479,7 +482,11 @@ Wenn unten 0 rauskommt, ist die Linie **senkrecht**. Durch 0 teilen geht nicht. 
 
 👀 **Beispiel:** y = 1 · x + 2. Dann ist b = 2. Die Linie geht durch (0 | 2).
 
-🔮 **Rate zuerst:** Wenn b von 0 auf 3 geht – wird die Linie steiler oder rutscht sie nur hoch? Rate, dann bewege nur b:
+```js
+const gb_pred = view(Inputs.radio(["rutscht nur hoch/runter", "wird steiler/flacher"], {label: "Rate: b geht von 0 auf 3. Was passiert?"}));
+```
+
+${gb_pred ? "Okay, festgelegt. Jetzt bewege unten nur b und prüfe." : "⬜ Rate zuerst. Festlegen hilft – auch wenn es falsch ist."}
 
 ```js
 const gm_b = view(Inputs.range([-2, 2], {value: 1, step: 0.5, label: "m – bleibt erst gleich"}));
@@ -572,13 +579,19 @@ Deine Gerade heißt jetzt **y = ${String(gm_end).replace(".", ",")} · x ${gb_en
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**Sage es in einem Satz (Sprachhilfe):**
+**In einem Satz:**
 
 „Die Gerade steigt / fällt, weil m = … Sie startet bei (0 | …), weil b = …"
 
-Beispiel: „Die Gerade steigt mittel, weil m = 1. Sie startet bei (0 | 0), weil b = 0."
+Beispiel: „Steigt mittel, weil m = 1. Start bei (0 | 0), weil b = 0."
 
 </div>
+
+```js
+const g_odd = view(Inputs.radio(["y = 2·x + 1 und y = 2·x + 3", "y = 2·x + 1 und y = 1·x + 1", "alle drei"], {label: "Welche zwei laufen parallel (gleich steil)?"}));
+```
+
+${g_odd === "y = 2·x + 1 und y = 2·x + 3" ? "✅ **Genau.** Gleiches m = parallel. b ist egal." : g_odd === "y = 2·x + 1 und y = 1·x + 1" ? "❌ Da ist b gleich (+1), aber m anders (2 vs. 1). Parallel heißt: m gleich." : g_odd ? "❌ Check m: 2, 2, 1. Nur die beiden mit m=2 sind parallel." : "⬜ Rate zuerst."}
 
 ---
 

@@ -94,14 +94,20 @@ const p1_q1 = view(Inputs.radio(["das x²", "das b", "die Farben"], {label: "Was
 
 ${p1_q1 === "das x²" ? "✅ **Richtig.** Ohne x² bleibt es gerade." : p1_q1 ? "❌ Nur **x²** biegt. b und c gibt es bei beiden." : "⬜ Wähle eine Antwort."}
 
+```js
+const p_mix = view(Inputs.radio(["y = 2·x + 1", "y = x² + 1", "y = 2·x² + 3·x + 1"], {label: "Was ist eine Gerade?"}));
+```
+
+${p_mix === "y = 2·x + 1" ? "✅ **Genau.** Nur x, kein x²." : p_mix ? "❌ Check x²: Sobald x² drin ist, ist es eine Parabel – egal was sonst noch da steht." : "⬜ Rate zuerst."}
+
 ---
 
 ## 2. Wiederholung: Wertetabelle bei Parabeln
 
-Du kennst das schon von Geraden:
+Wie bei Geraden:
 **Oben x wählen. Unten y ausrechnen.**
 
-👀 **Ich zeige – y = x², ganz langsam:**
+👀 **Ich zeige – y = x²:**
 
 - x = 0 → y = 0² = 0 · 0 = 0 → Punkt (0 | 0)
 - x = 1 → y = 1² = 1 → Punkt (1 | 1)
@@ -231,7 +237,7 @@ const pa_a = view(Inputs.range([-3, 3], {value: 1, step: 0.5, label: "a"}));
 }
 ```
 
-So erkennst du **a** am Bild, ganz ohne Rechnung:
+So liest du **a** am Bild ab:
 
 > **Gehe vom Scheitel 1 nach rechts. Dann gehe a nach oben.**
 > Bei minus-a gehst du nach unten.
@@ -250,7 +256,8 @@ So erkennst du **a** am Bild, ganz ohne Rechnung:
 **Übungsreihe – nur a ändert sich:**
 Stelle nacheinander ein: a = 0,5 → 1 → 2 → -1.
 Frage jedes Mal vorher: **Wird es enger oder weiter? Oben oder unten?**
-Regel: Betrag groß = eng. Vorzeichen = Richtung. Erkläre es laut in 1 Satz.
+Was bleibt gleich? Der Scheitel bei (0 | 0).
+Regel: Betrag groß = eng. Vorzeichen = Richtung. In 1 Satz: „a = …, also …".
 
 </div>
 
@@ -283,6 +290,12 @@ Es sagt: Wo schneidet die Parabel die y-Achse?
 
 Warum? Setze x = 0 in y = a · x² + b · x + c ein:
 y = a · 0² + b · 0 + c = c. Alles mit x fällt weg. Übrig bleibt nur c.
+
+```js
+const pc_pred = view(Inputs.radio(["rutscht nur hoch/runter", "wird enger/weiter"], {label: "Rate: c geht von 0 auf 3. Was passiert?"}));
+```
+
+${pc_pred ? "Festgelegt. Jetzt bewege unten nur c und prüfe." : "⬜ Rate zuerst."}
 
 Bewege **nur c**. a bleibt bei 1:
 
@@ -364,7 +377,7 @@ Die **Scheitelpunktform** zeigt dir den Scheitel sofort:
 
 </div>
 
-Probiere es aus. Bewege d und e. Der grüne Punkt ist immer der Scheitel:
+Bewege d und e. Der grüne Punkt ist immer der Scheitel:
 
 ```js
 const ps_d = view(Inputs.range([-4, 4], {value: 2, step: 1, label: "d – rechts / links"}));
@@ -423,7 +436,7 @@ ${p4a_q1 === "S(-3 | 1)" ? "✅ **Richtig.** x+3 = x–(-3), also d=-3 = 3 nach 
 Manchmal hast du **y = a · x² + b · x + c** (Normalform).
 Du willst den Scheitel wissen, ohne zu zeichnen.
 
-Dafür gibt es eine **Formel**. Nur 2 kleine Schritte nacheinander:
+Dafür gibt es eine **Formel** – 2 Schritte:
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
@@ -442,7 +455,7 @@ Scheitel ist **S(xs | ys)**.
 2. ys = 1·2² + (-4)·2 + 3 = 4 – 8 + 3 = -1.
 3. Scheitel S(2 | -1).
 
-✏️ **Du bist dran:** Mache Schritt 1 allein im Kopf, dann prüfe mit der Rechnung unter dem Bild.
+✏️ **Du bist dran:** Erst Schritt 1 im Kopf, dann unten checken.
 
 🩺 **Mini-Check:**
 
@@ -556,8 +569,8 @@ const pn0_c = view(Inputs.range([-3, 4], {value: -1, step: 1, label: "c – bewe
 
 ### 5a. Die Diskriminante D – sie sagt dir, wie viele Nullstellen es gibt
 
-Du musst **nicht zeichnen**, um es zu wissen.
-Du rechnest **D** aus. D heißt **Diskriminante**. Schweres Wort, leichte Sache.
+Kein Bild nötig.
+Du rechnest **D** aus. D heißt **Diskriminante**.
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
@@ -628,6 +641,12 @@ Für **a=${pd_a}, b=${pd_b}, c=${pd_c}**:
 3. D = b² – 4·a·c = ${pd_b*pd_b} – ${(4*pd_a*pd_c) >= 0 ? (4*pd_a*pd_c) : `(${4*pd_a*pd_c})`} = **${pd_b*pd_b - 4*pd_a*pd_c}**
 4. Also: **${pd_a === 0 ? "keine Parabel" : (pd_b*pd_b - 4*pd_a*pd_c) > 0 ? "2 Nullstellen" : (pd_b*pd_b - 4*pd_a*pd_c) === 0 ? "1 Nullstelle" : "keine Nullstelle"}**
 
+```js
+const pD_seq = view(Inputs.radio(["D wird kleiner", "D bleibt gleich", "D wird größer"], {label: "Nur c ändert sich. a=1, b=-4 bleiben. y=x²-4x+3 hat D=4. Was vermutest du für y=x²-4x+5?"}));
+```
+
+${pD_seq === "D wird kleiner" ? "✅ **Genau.** 4·a·c wird größer (20 statt 12). D = 16-20 = -4. Mehr c frisst D auf." : pD_seq === "D bleibt gleich" ? "❌ c steckt in D drin (4·a·c). Wenn c wächst, ändert sich D. Stell oben c=5 ein und check." : pD_seq ? "❌ Andersrum: D = 16 - 4·1·c. Größeres c heißt mehr Abzug. Stell oben c=5 ein." : "⬜ Rate zuerst, dann oben c=5 einstellen."}
+
 🩺 **Mini-Check – was heißt D = 0?**
 
 ```js
@@ -663,7 +682,7 @@ Nur wenn D **minus** ist, geht es nicht. Man kann aus minus keine Wurzel ziehen.
 5. x2 = (4 + 2) : 2 = 6 : 2 = 3.
 6. Nullstellen: **(1 | 0)** und **(3 | 0)**.
 
-Probe: Setze x=1 ein: 1 – 4 + 3 = 0. Stimmt! **Probe gehört immer dazu.**
+Probe: Setze x=1 ein: 1 – 4 + 3 = 0. Stimmt. So checkst du dich selbst.
 
 Die blauen Punkte im Bild oben sind x<sub>1</sub> und x<sub>2</sub>. **Mit deinen Regler-Werten:**
 
@@ -702,7 +721,7 @@ Du kannst umwandeln:
 - **Scheitel → normal:** Klammer ausmultiplizieren. Das ist unser Beispiel von oben: y = 1·(x–2)² + (-1) = x² –4x +4 –1 = x² –4x +3.
 - **Normal → Scheitel:** Nimm die **Scheitel-Formel** von oben (xs, ys). Dann schreibe y = a·(x–xs)² + ys. Beispiel: Aus y = x² –4x +3 mit S(2 | -1) wird y = 1·(x–2)² + (-1).
 
-Du musst nicht alles auf einmal können. Merke dir nur: **Beide Formen beschreiben die gleiche Parabel.**
+Ein Satz reicht: **Beide Formen beschreiben die gleiche Parabel.**
 
 Zum Schluss: Stelle hier alles ein und schaue, wie Scheitel, D und Nullstellen zusammenhängen:
 
@@ -754,7 +773,13 @@ ${pf_a === 0 ? "Bei **a = 0** hast du **keine Parabel** mehr, sondern eine waage
 
 Nur wenn der Scheitel genau auf der y-Achse liegt (d = 0), sind c und e gleich. Sonst nicht. Beispiel: y = (x–2)² –1 hat e = -1, aber c = 3.
 
-Sage laut: „c ist bei x = 0, e ist beim Scheitel."
+Check: „c ist bei x = 0, e ist beim Scheitel."
+
+```js
+const p_odd = view(Inputs.radio(["y = (x–2)² – 1", "y = x² – 4x + 3", "y = (x+2)² – 1"], {label: "Welche passt nicht zu S(2 | -1)?"}));
+```
+
+${p_odd === "y = (x+2)² – 1" ? "✅ **Genau.** (x+2) heißt d=-2, also S(-2 | -1). Die anderen beiden sind gleich, nur anders geschrieben." : p_odd ? "❌ Stell oben d=2, e=-1 ein. Welche Gleichung zeigt einen anderen Scheitel?" : "⬜ Rate zuerst."}
 
 </div>
 
