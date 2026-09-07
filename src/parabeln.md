@@ -5,12 +5,11 @@ toc: true
 
 # Parabeln – Schritt für Schritt
 
-Eine Parabel ist **gebogen**. Wie ein **U**.
-Wie ein Ball, der fliegt und wieder runter kommt.
+Eine Parabel sieht aus wie ein **U**.
+So fliegt ein Ball: hoch und wieder runter. So spritzt Wasser aus dem Schlauch. So sieht ein Brückenbogen aus.
 
-Eine Gerade war gerade. Eine Parabel ist krumm.
-Aber: **Wertetabelle und Koordinatensystem bleiben gleich.**
-Das kannst du schon – wir **rufen es nur ab**, wir lernen es nicht neu.
+Koordinatensystem und Wertetabelle bleiben gleich.
+Das kannst du schon von den Geraden.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
@@ -19,9 +18,9 @@ Das kannst du schon – wir **rufen es nur ab**, wir lernen es nicht neu.
 1. 🔁 **Abrufen** – Geraden-Wissen + Minus-Rechnen.
 2. 👀 **Ich zeige** – 1 fertiges Beispiel.
 3. 🔮 **Denke – Rate – Prüfe** – erst Vermutung, dann Regler.
-4. 🩺 **Mini-Check** – typische Fehler-Frage. Jede falsche Antwort erklärt einen Denkfehler.
+4. 🩺 **Mini-Check** – jede Antwort erklärt dir, wo der Denkfehler liegt.
 
-**Deine Ziele:** Danach kannst du Tabelle, **a/c**, **Scheitel S(d|e)**, **D** und **abc-Formel** erklären und anwenden.
+**Deine Ziele:** Danach rechnest du eine Tabelle, findest den **Scheitel** und prüfst die **Nullstellen** mit **D** und **abc-Formel**.
 
 </div>
 
@@ -31,7 +30,7 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 ---
 
-## 0. 🔁 Abrufen – ohne Parabel geht das nicht
+## 0. Abrufen – das musst du können
 
 ```js
 const p0_q1 = view(Inputs.radio(["m = Steigung, b = Start auf y-Achse", "m = Start, b = Steigung", "weiß nicht mehr"], {label: "1) Gerade y = m·x + b. Was war m und b?"}));
@@ -43,9 +42,9 @@ ${p0_q1 === "m = Steigung, b = Start auf y-Achse" ? "✅ **Richtig.** Das brauch
 const p0_q2 = view(Inputs.radio(["1", "-1", "-2"], {label: "2) Was ist (-1)²?"}));
 ```
 
-${p0_q2 === "1" ? "✅ **Richtig.** (-1)·(-1) = 1. **Minus mal minus = plus.** Das ist die wichtigste Rechenregel für Parabeln." : p0_q2 ? "❌ **Klassiker:** (-1)² = (-1)·(-1) = **1**, nicht -1. Minus mal minus gibt plus." : "⬜ Wähle eine Antwort."}
+${p0_q2 === "1" ? "✅ **Richtig.** (-1)·(-1) = 1. **Minus mal minus = plus.** Das brauchst du bei jeder Parabel-Rechnung." : p0_q2 ? "❌ **Klassiker:** (-1)² = (-1)·(-1) = **1**, nicht -1. Minus mal minus gibt plus." : "⬜ Wähle eine Antwort."}
 
-Wenn beide ✅ sind, weiter. Sonst erst wiederholen – das spart dir später Frust (Cognitive Load).
+Wenn beide stimmen, gehe weiter. Sonst wiederhole zuerst Geraden und Minus-Rechnen. Das spart dir später Zeit.
 
 ---
 
@@ -56,7 +55,7 @@ Wenn beide ✅ sind, weiter. Sonst erst wiederholen – das spart dir später Fr
 
 Das x² macht die Biegung.
 
-Schau. Links gerade, rechts gebogen. Bewege nichts. Nur schauen:
+Schaue nur. Links siehst du gerade, rechts gebogen. Bewege noch nichts. Nur schauen:
 
 ```js
 {
@@ -82,8 +81,8 @@ Schau. Links gerade, rechts gebogen. Bewege nichts. Nur schauen:
 <div class="card" style="border-left: 6px solid #dc2626;">
 
 **Merke:**
-Gerade = gerade Linie. Parabel = U-Form.
-Schuld ist das **x²**.
+Gerade Linie ohne x². U-Form mit x².
+Das x² macht die Biegung.
 
 </div>
 
@@ -110,17 +109,28 @@ Du kennst das schon von Geraden:
 - x = 2 → y = 2² = 4 → Punkt (2 | 4)
 - x = -2 → y = (-2)² = 4 → Punkt (-2 | 4)
 
-Siehst du? Links und rechts kommt **das Gleiche** raus. Darum ist es **symmetrisch**. Darum wird es ein U.
+Siehst du? Links und rechts kommt **das Gleiche** raus. Das heißt **symmetrisch** oder **spiegelgleich**: links und rechts sind gleich. Darum wird es ein U.
 
-✏️ **Du bist dran (1 Lücke):** x = 3 → y = 3² = ? Denke zuerst (9?), dann prüfe mit der Tabelle unten (stelle gedanklich x=3 vor – oder rechne 3·3).
+✏️ **Du bist dran (1 Lücke):** x = 3 → y = 3² = ? Denke zuerst, dann prüfe mit der Tabelle unten.
 
-🩺 **Mini-Check – der teuerste Fehler:**
+🩺 **Mini-Check – hier passieren die meisten Fehler:**
 
 ```js
 const p2_q1 = view(Inputs.radio(["4", "-4", "0"], {label: "Was ist (-2)²?"}));
 ```
 
-${p2_q1 === "4" ? "✅ **Richtig.** (-2)·(-2) = 4." : p2_q1 === "-4" ? "❌ Du hast **-2·2** gerechnet (ohne Klammer). Mit Klammer: (-2)·(-2) = **+4**. Das entscheidet über U oder falsches Bild." : p2_q1 ? "❌ Rechne: (-2)·(-2). Minus mal minus = plus." : "⬜ Wähle eine Antwort."}
+${p2_q1 === "4" ? "✅ **Richtig.** (-2)·(-2) = 4." : p2_q1 === "-4" ? "❌ Du hast **-2·2** gerechnet (ohne Klammer). Mit Klammer: (-2)·(-2) = **+4**. Das entscheidet, ob dein U stimmt." : p2_q1 ? "❌ Rechne: (-2)·(-2). Minus mal minus = plus." : "⬜ Wähle eine Antwort."}
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+
+**Aufgepasst – Klammer oder keine Klammer:**
+
+- **(-2)² = 4**, weil (-2)·(-2) = 4.
+- **-2² = -4**, weil nur 2·2 gerechnet wird und das Minus stehen bleibt.
+
+In der Tabelle steht immer (-2)² mit Klammer. Rechne darum zuerst die Klammer.
+
+</div>
 
 Hier kannst du es sehen. Die Tabelle macht sich von allein:
 
@@ -174,13 +184,13 @@ const pa_tab = view(Inputs.range([-2, 2], {value: 1, step: 0.5, label: "a – vo
 **Normalform:**
 **y = a · x² + b · x + c**
 
-- **a** sagt: Nach oben oder unten offen? Eng oder weit? (heute)
-- **c** sagt: Nach oben oder unten verschoben? Start auf der y-Achse. (heute)
-- **b** sagt: Auch seitlich verschoben (schwieriger, darum später die Scheitelform).
+- **a** sagt: Nach oben oder unten offen? Eng oder weit?
+- **c** sagt: Hoch oder runter geschoben? Start auf der y-Achse.
+- **b** verschiebt auch seitlich. Am Bild siehst du das kaum. Darum rechnest du den Scheitel mit der Formel unten.
 
 </div>
 
-Wir schauen uns **a** und **c** einzeln an. Wie bei Geraden mit m und b.
+Wir schauen uns **a** und **c** einzeln an. So wie bei Geraden mit m und b.
 
 ### 3a. Das a: wohin zeigt das U? Eng oder weit?
 
@@ -190,7 +200,7 @@ Wir schauen uns **a** und **c** einzeln an. Wie bei Geraden mit m und b.
 const p3a_pred = view(Inputs.radio(["U nach oben", "U nach unten", "kein U mehr"], {label: "Rate: a = -1. Was erwartest du?"}));
 ```
 
-${p3a_pred ? "Gut. Stelle unten a = -1 ein und **prüfe**. Erkläre dann: Warum war es so?" : "⬜ Rate zuerst – auch falsches Raten hilft (Hypercorrection-Effekt)."}
+${p3a_pred ? "Gut. Stelle unten a = -1 ein und **prüfe**. Erkläre dann: Warum war es so?" : "⬜ Rate zuerst. Falsch raten ist erlaubt."}
 
 ```js
 const pa_a = view(Inputs.range([-3, 3], {value: 1, step: 0.5, label: "a"}));
@@ -237,10 +247,10 @@ So erkennst du **a** am Bild, ganz ohne Rechnung:
 
 <div class="card" style="border-left: 6px solid #f59e0b;">
 
-**Kluge Reihe – nur a ändert sich (Reflektieren):**
+**Übungsreihe – nur a ändert sich:**
 Stelle nacheinander ein: a = 0,5 → 1 → 2 → -1.
 Frage jedes Mal vorher: **Wird es enger oder weiter? Oben oder unten?**
-Regel: Betrag groß = eng. Vorzeichen = Richtung. Erkläre es jemandem in 1 Satz.
+Regel: Betrag groß = eng. Vorzeichen = Richtung. Erkläre es laut in 1 Satz.
 
 </div>
 
@@ -252,7 +262,7 @@ Regel: Betrag groß = eng. Vorzeichen = Richtung. Erkläre es jemandem in 1 Satz
 - **a ist minus** → U nach **unten**. Wie ein Berg. Beispiel a = -1.
 - **a ist groß** (z.B. 2 oder 3) → U ist **eng**.
 - **a ist klein** (z.B. 0,5) → U ist **weit**.
-- a = 1 heißt **Normalparabel**. Das ist die normale.
+- a = 1 heißt **Normalparabel**. So sieht das normale U aus.
 
 </div>
 
@@ -266,13 +276,13 @@ const p3a_q1 = view(Inputs.radio(["nach unten, eng", "nach oben, eng", "nach unt
 
 ${p3a_q1 === "nach unten, eng" ? "✅ **Richtig.** Minus = unten, 2 = eng." : p3a_q1 === "nach oben, eng" ? "❌ Vorzeichen-Fehler: **minus = unten**. Betrag 2 = eng stimmt." : p3a_q1 ? "❌ Betrag 2 ist **groß** = eng, nicht weit. Minus = unten." : "⬜ Wähle eine Antwort."}
 
-### 3b. Das c: der y-Achsenabschnitt – hoch oder runter schieben
+### 3b. Das c: Start auf der y-Achse – hoch oder runter schieben
 
-**c** heißt **y-Achsenabschnitt**. Das ist das Gleiche wie das **b bei Geraden**.
+**c** heißt **y-Achsenabschnitt**. Das ist der Start auf der y-Achse. So wie das **b bei Geraden**.
 Es sagt: Wo schneidet die Parabel die y-Achse?
 
 Warum? Setze x = 0 in y = a · x² + b · x + c ein:
-y = a · 0 + b · 0 + c = c. Alles mit x fällt weg. Übrig bleibt nur c.
+y = a · 0² + b · 0 + c = c. Alles mit x fällt weg. Übrig bleibt nur c.
 
 Bewege **nur c**. a bleibt bei 1:
 
@@ -316,7 +326,7 @@ Die Parabel geht immer durch **(0 | ${pa_c})**. Das ist genau c.
 
 </div>
 
-🩺 **Mini-Check (c vs. b verwechselt):**
+🩺 **Mini-Check – c oder b?**
 
 ```js
 const p3b_q1 = view(Inputs.radio(["c = 5, Punkt (0 | 5)", "c = 3, Punkt (0 | 3)", "c = 1"], {label: "y = x² + 3·x + 5. Was ist c?"}));
@@ -328,7 +338,7 @@ ${p3b_q1 === "c = 5, Punkt (0 | 5)" ? "✅ **Richtig.** c ist die Zahl ohne x." 
 
 ## 4. Der Scheitelpunkt und die Scheitelpunktform
 
-Der **Scheitelpunkt** ist der wichtigste Punkt der Parabel:
+Der **Scheitelpunkt** ist der tiefste oder höchste Punkt der Parabel:
 
 - Bei U nach oben: der **tiefste Punkt**. Das Tal.
 - Bei U nach unten: der **höchste Punkt**. Der Berggipfel.
@@ -400,7 +410,7 @@ Beispiele zum Nachmachen:
 - e = 1 heißt 1 nach oben. e = -1 heißt 1 nach unten.
 - **a liest du so ab:** Gehe vom grünen Scheitel **1 nach rechts**, dann **${ps_a} nach ${ps_a >= 0 ? "oben" : "unten"}** (grüne Strecke). Dort triffst du wieder die Parabel (schwarzer Punkt). Genau wie bei Geraden mit dem Steigungsdreieck, nur dass die Parabel danach gebogen weitergeht.
 
-🩺 **Hinge-Frage – die Falle (nur weiter wenn richtig):**
+🩺 **Stopp-Frage – die Vorzeichen-Falle:**
 
 ```js
 const p4a_q1 = view(Inputs.radio(["S(-3 | 1)", "S(3 | 1)", "S(3 | -1)"], {label: "y = 1·(x + 3)² + 1. Wo ist der Scheitel?"}));
@@ -424,8 +434,6 @@ Dafür gibt es eine **Formel**. Nur 2 kleine Schritte nacheinander:
 
 Scheitel ist **S(xs | ys)**.
 
-Es gibt auch kurz: ys = c – b² : (4·a). Das ist das Gleiche, nur schneller.
-
 </div>
 
 👀 **Ich zeige – Beispiel ganz langsam:** y = 1 · x² – 4 · x + 3. Also a = 1, b = -4, c = 3.
@@ -434,7 +442,7 @@ Es gibt auch kurz: ys = c – b² : (4·a). Das ist das Gleiche, nur schneller.
 2. ys = 1·2² + (-4)·2 + 3 = 4 – 8 + 3 = -1.
 3. Scheitel S(2 | -1).
 
-✏️ **Du bist dran:** Mache Schritt 1 allein im Kopf für deine Regler unten, dann prüfe mit Zeile 1.
+✏️ **Du bist dran:** Mache Schritt 1 allein im Kopf, dann prüfe mit der Rechnung unter dem Bild.
 
 🩺 **Mini-Check:**
 
@@ -481,13 +489,23 @@ const pn_c = view(Inputs.range([-5, 5], {value: 3, step: 1, label: "c"}));
 
 Für **y = ${String(pn_a).replace(".", ",")}·x² ${pn_b >= 0 ? "+" : "−"} ${String(Math.abs(pn_b)).replace(".", ",")}·x ${pn_c >= 0 ? "+" : "−"} ${String(Math.abs(pn_c)).replace(".", ",")}**:
 
-Das Beispiel oben zeigt die Start-Einstellung der Regler. **Verstelle die Regler – diese Rechnung rechnet mit:**
+**Mit deinen Regler-Werten:**
 
 1. xs = –b : (2·a) = –(${pn_b}) : (2·${pn_a}) = ${pn_a === 0 ? "geht nicht, a=0" : String((-pn_b/(2*pn_a)).toFixed(2)).replace(".", ",")}
 2. ys = a·xs² + b·xs + c = ${pn_a}·(${pn_a === 0 ? "–" : String((-pn_b/(2*pn_a)).toFixed(2)).replace(".", ",")})² ${pn_b >= 0 ? "+" : "−"} ${String(Math.abs(pn_b)).replace(".", ",")}·(${pn_a === 0 ? "–" : String((-pn_b/(2*pn_a)).toFixed(2)).replace(".", ",")}) ${pn_c >= 0 ? "+" : "−"} ${String(Math.abs(pn_c)).replace(".", ",")} = ${pn_a === 0 ? "geht nicht" : String((pn_a*(-pn_b/(2*pn_a))*(-pn_b/(2*pn_a)) + pn_b*(-pn_b/(2*pn_a)) + pn_c).toFixed(2)).replace(".", ",")}
 3. Scheitel **S(${pn_a === 0 ? "–" : String((-pn_b/(2*pn_a)).toFixed(2)).replace(".", ",")} | ${pn_a === 0 ? "–" : String((pn_a*(-pn_b/(2*pn_a))*(-pn_b/(2*pn_a)) + pn_b*(-pn_b/(2*pn_a)) + pn_c).toFixed(2)).replace(".", ",")})**.
 
 Wenn a = 0 ist, hast du **keine Parabel** mehr, sondern eine Gerade. Dann gibt es keinen Scheitel.
+
+<div class="card" style="border-left: 6px solid #7c3aed;">
+
+**Symmetrieachse – die Faltlinie:**
+
+Durch den Scheitel geht eine senkrechte Linie: **x = xs**. Dort kannst du die Parabel wie Papier falten. Links und rechts sind gleich.
+
+Das spart Rechnen: Wenn du einen Punkt links kennst, kennst du auch den Punkt rechts. Beispiel: Scheitel bei xs = 2 und Punkt (0 | 3) links davon. Dann liegt rechts davon bei x = 4 der gleiche y-Wert.
+
+</div>
 
 ---
 
@@ -502,7 +520,7 @@ Es gibt nur 3 Möglichkeiten. Schau dir alle 3 an:
 - **1 Nullstelle:** Parabel berührt nur. Der Scheitel liegt genau auf der Achse.
 - **0 Nullstellen:** Parabel schwebt ganz darüber oder darunter.
 
-🔮 **Rate zuerst:** Was passiert, wenn c nach oben geht – mehr oder weniger Treffer? Rate, dann bewege c und zähle, wie oft die rote Linie die schwarze waagerechte Achse trifft:
+🔮 **Rate zuerst:** Was passiert, wenn c nach oben geht – mehr oder weniger Treffer? Rate, dann bewege c und zähle, wie oft die rote Linie die x-Achse trifft:
 
 ```js
 const pn0_c = view(Inputs.range([-3, 4], {value: -1, step: 1, label: "c – bewege mich hoch/runter (y = x² + c)"}));
@@ -603,20 +621,20 @@ const pd_c = view(Inputs.range([-5, 5], {value: 3, step: 1, label: "c"}));
 
 Für **a=${pd_a}, b=${pd_b}, c=${pd_c}**:
 
-Das Beispiel oben zeigt die Start-Einstellung der Regler. **Verstelle die Regler – diese Rechnung rechnet mit:**
+**Mit deinen Regler-Werten:**
 
 1. b² = (${pd_b})² = ${pd_b*pd_b}
 2. 4·a·c = 4·${pd_a}·${pd_c} = ${4*pd_a*pd_c}
 3. D = b² – 4·a·c = ${pd_b*pd_b} – ${(4*pd_a*pd_c) >= 0 ? (4*pd_a*pd_c) : `(${4*pd_a*pd_c})`} = **${pd_b*pd_b - 4*pd_a*pd_c}**
 4. Also: **${pd_a === 0 ? "keine Parabel" : (pd_b*pd_b - 4*pd_a*pd_c) > 0 ? "2 Nullstellen" : (pd_b*pd_b - 4*pd_a*pd_c) === 0 ? "1 Nullstelle" : "keine Nullstelle"}**
 
-🩺 **Mini-Check (D = 0 Falle):**
+🩺 **Mini-Check – was heißt D = 0?**
 
 ```js
 const p5_q1 = view(Inputs.radio(["1 Nullstelle (berührt)", "2 Nullstellen", "keine Nullstelle"], {label: "D = 0. Wie viele Nullstellen?"}));
 ```
 
-${p5_q1 === "1 Nullstelle (berührt)" ? "✅ **Richtig.** D=0 heißt genau 1 Berührpunkt – der Scheitel liegt auf der Achse." : p5_q1 === "keine Nullstelle" ? "❌ Verwechslung: **D minus** = keine. **D null** = eine." : p5_q1 ? "❌ D=0 ist der Grenzfall: nicht 2, nicht 0, sondern genau **1**." : "⬜ Wähle eine Antwort."}
+${p5_q1 === "1 Nullstelle (berührt)" ? "✅ **Richtig.** D=0 heißt genau 1 Berührpunkt – der Scheitel liegt auf der Achse." : p5_q1 === "keine Nullstelle" ? "❌ Verwechslung: **D minus** = keine. **D null** = eine." : p5_q1 ? "❌ D=0 ist der Sonderfall: nicht 2, nicht 0, sondern genau **1**." : "⬜ Wähle eine Antwort."}
 
 ### 5b. Die abc-Formel – so rechnest du die Nullstellen aus
 
@@ -647,7 +665,7 @@ Nur wenn D **minus** ist, geht es nicht. Man kann aus minus keine Wurzel ziehen.
 
 Probe: Setze x=1 ein: 1 – 4 + 3 = 0. Stimmt! **Probe gehört immer dazu.**
 
-**Schau dir dein Beispiel von oben an.** Das Beispiel oben zeigt die Start-Einstellung der Regler. **Verstelle die Regler – diese Rechnung rechnet mit.** Die blauen Punkte sind genau x<sub>1</sub> und x<sub>2</sub>:
+Die blauen Punkte im Bild oben sind x<sub>1</sub> und x<sub>2</sub>. **Mit deinen Regler-Werten:**
 
 1. –b = –(${pd_b}) = ${-pd_b}
 2. √D = ${(pd_b*pd_b - 4*pd_a*pd_c) < 0 ? `√(${pd_b*pd_b - 4*pd_a*pd_c}) geht nicht (D ist minus, keine Wurzel aus minus)` : `√${String((pd_b*pd_b - 4*pd_a*pd_c).toFixed(2)).replace(".", ",")} = ${String(Math.sqrt(pd_b*pd_b - 4*pd_a*pd_c).toFixed(2)).replace(".", ",")}`}
@@ -681,8 +699,8 @@ Wenn D minus ist, gibt es **keine** Nullstellen. Dann bleiben x<sub>1</sub> und 
 
 Du kannst umwandeln:
 
-- **Scheitel → normal:** Klammer ausmultiplizieren. Beispiel y = 1·(x–2)² + (-1) = x² –4x +4 –1 = x² –4x +3.
-- **Normal → Scheitel:** Nimm die **Scheitel-Formel** von oben (xs, ys). Dann schreibe y = a·(x–xs)² + ys.
+- **Scheitel → normal:** Klammer ausmultiplizieren. Das ist unser Beispiel von oben: y = 1·(x–2)² + (-1) = x² –4x +4 –1 = x² –4x +3.
+- **Normal → Scheitel:** Nimm die **Scheitel-Formel** von oben (xs, ys). Dann schreibe y = a·(x–xs)² + ys. Beispiel: Aus y = x² –4x +3 mit S(2 | -1) wird y = 1·(x–2)² + (-1).
 
 Du musst nicht alles auf einmal können. Merke dir nur: **Beide Formen beschreiben die gleiche Parabel.**
 
@@ -727,9 +745,22 @@ const pf_e = view(Inputs.range([-3, 3], {value: -2, step: 1, label: "e (Scheitel
 
 ${pf_a === 0 ? "Bei **a = 0** hast du **keine Parabel** mehr, sondern eine waagerechte Gerade. Dann gibt es keinen Scheitel und kein D. Stelle a wieder auf 1." : `Deine Gleichung: **${String(pf_a).replace(".", ",")}·(x – ${pf_d})² + ${pf_e}**. Scheitel **S(${pf_d} | ${pf_e})**.`}
 
+<div class="card" style="border-left: 6px solid #f59e0b;">
+
+**Nicht verwechseln – c oder e?**
+
+- **c** ist der Start auf der y-Achse: Punkt (0 | c). Du liest c in der Normalform ab.
+- **e** ist die Höhe vom Scheitel: Scheitel S(d | e). Du liest e in der Scheitelform ab.
+
+Nur wenn der Scheitel genau auf der y-Achse liegt (d = 0), sind c und e gleich. Sonst nicht. Beispiel: y = (x–2)² –1 hat e = -1, aber c = 3.
+
+Sage laut: „c ist bei x = 0, e ist beim Scheitel."
+
+</div>
+
 ---
 
-## 🎫 Exit-Ticket – darfst du fertig sagen?
+## Exit-Ticket – darfst du fertig sagen?
 
 ```js
 const p6_q1 = view(Inputs.radio(["(-2)² = 4", "(-2)² = -4"], {label: "1) Was ist (-2)²?"}));
@@ -755,7 +786,7 @@ const p6_q4 = view(Inputs.radio(["(0 | 5)", "(0 | 3)"], {label: "4) y = x² + 3�
 
 ${p6_q4 === "(0 | 5)" ? "✅ c=5." : p6_q4 ? "❌ c ist die Zahl ohne x." : "⬜"}
 
-Wenn 3 von 4 stimmen: fertig. Sonst oben bei 🩺 noch einmal schauen.
+Wenn 3 von 4 stimmen: fertig. Sonst oben beim Mini-Check noch einmal schauen.
 
 ---
 
@@ -763,13 +794,13 @@ Wenn 3 von 4 stimmen: fertig. Sonst oben bei 🩺 noch einmal schauen.
 
 **Geschafft! Das kannst du jetzt:**
 
-- Du machst eine Wertetabelle für Parabeln.
-- Du weißt: **Normalform y = a·x² + b·x + c**.
-- Du weißt: **Scheitelpunktform y = a·(x–d)² + e, Scheitel S(d|e)**.
-- Du rechnest den Scheitel mit **xs = –b : (2·a)**.
-- Du rechnest **D = b² – 4·a·c** und weißt: plus = 2, null = 1, minus = 0 Nullstellen.
-- Du rechnest Nullstellen mit **x = (–b ± √D) : (2·a)**.
+- Du machst eine Wertetabelle für Parabeln. Minus mal minus gibt plus.
+- Du sagst: **Normalform y = a·x² + b·x + c**. Damit rechnest du D und Nullstellen.
+- Du sagst: **Scheitelform y = a·(x–d)² + e, Scheitel S(d|e)**. Achtung: (x+3) heißt d = -3.
+- Du rechnest den Scheitel mit **xs = –b : (2·a)**, dann ys durch Einsetzen.
+- Du rechnest **D = b² – 4·a·c** und sagst: plus = 2, null = 1, minus = 0 Nullstellen.
+- Du rechnest Nullstellen mit **x = (–b ± √D) : (2·a)** und machst die Probe.
 
-Gehe zurück zu [Start](./) oder übe noch einmal [Geraden](./geraden). **Spacing-Tipp:** Mache das Exit-Ticket morgen noch einmal – dann bleibt es im Kopf.
+Gehe zurück zu [Start](./) oder übe noch einmal [Geraden](./geraden). Mache das Exit-Ticket morgen noch einmal. Dann bleibt es im Kopf.
 
 </div>

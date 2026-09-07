@@ -5,10 +5,9 @@ toc: true
 
 # Geraden – Schritt für Schritt
 
-Eine Gerade ist **gerade**.
-Wie mit dem Lineal gezogen.
+Eine Gerade sieht aus wie ein Strich mit dem Lineal.
 
-Wir machen **eine Sache nach der anderen** (immer nur 1 Neues pro Schritt):
+Wir machen eine Sache nach der anderen (immer nur 1 Neues pro Schritt):
 Zuerst nur das Koordinatensystem.
 Dann nur die Tabelle.
 Dann nur die Steigung.
@@ -23,7 +22,7 @@ Dann nur der Startwert.
 3. 🔮 **Denke – Rate – Prüfe** – erst raten, dann Regler bewegen.
 4. 🩺 **Mini-Check** – ankreuzen, sofort Rückmeldung lesen.
 
-**Deine Ziele:** Danach kannst du Punkte finden, eine Wertetabelle rechnen, **m** und **b** erklären und jede Gerade mit 2 Punkten zeichnen.
+**Deine Ziele:** Danach findest du Punkte, rechnest eine Wertetabelle, erklärst **m** und **b** und zeichnest jede Gerade mit 2 Punkten.
 
 </div>
 
@@ -33,9 +32,9 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 ---
 
-## 0. 🔁 Abrufen – was du vom Start kannst
+## 0. Abrufen – was du vom Start kannst
 
-Ohne Bild. Nur aus dem Kopf. Dann weiter.
+Mache das ohne Bild, nur aus dem Kopf. Dann gehe weiter.
 
 ```js
 const g0_q1 = view(Inputs.radio(["3 nach rechts, 2 nach oben", "3 nach oben, 2 nach rechts", "3 und 2 sind egal"], {label: "Was heißt (3 | 2)?"}));
@@ -65,10 +64,9 @@ Ein Punkt hat immer 2 Zahlen: **(x | y)**.
 Gehe 3 nach rechts. Dann 2 nach oben. Dort ist der Punkt.
 
 Es gehen auch **Kommazahlen**, zum Beispiel **(2,5 | 1,5)**.
-Das Komma ist das normale Mathe-Komma. Der Strich | trennt x und y.
 Der Punkt liegt dann zwischen zwei Linien, mitten im Kästchen.
 
-🔮 **Denke – Rate – Prüfe.** Bevor du schiebst: Wo vermutest du (3 | 2)? Rechts-oben? Links-unten? Merke dir deine Vermutung. Dann prüfe:
+🔮 **Denke – Rate – Prüfe.** Wo liegt (3 | 2)? Rechts-oben oder links-unten? Merke dir deine Vermutung. Dann prüfe mit den Reglern:
 
 ```js
 const gx = view(Inputs.range([-5, 5], {value: 3, step: 0.5, label: "x – nach rechts"}));
@@ -130,7 +128,19 @@ Eine Gerade hat eine Gleichung. Sie heißt:
 
 Das heißt: Steigung m = 2. Startwert b = 1.
 
-Keine Angst. Wir schauen uns **m** und **b** einzeln an. Immer nur eine neue Sache auf einmal.
+Wir schauen uns **m** und **b** einzeln an. Immer nur eine neue Sache auf einmal.
+
+<div class="card" style="border-left: 6px solid #7c3aed;">
+
+**Beispiel aus dem Alltag – Taxi:**
+
+Grundgebühr 1 €, jeder Kilometer kostet 2 €. Nach x Kilometern zahlst du y Euro:
+
+y = 2 · x + 1
+
+m = 2 ist der Preis pro Kilometer. b = 1 ist die Grundgebühr beim Einsteigen (x = 0).
+
+</div>
 
 ---
 
@@ -206,14 +216,14 @@ Was siehst du?
 
 <div class="card" style="border-left: 6px solid #f59e0b;">
 
-**Kluge Übungsreihe (nur 1 Sache ändert sich):**
+**Übungsreihe (nur 1 Sache ändert sich):**
 
 1. Stelle **m=1, b=1** ein. Merke dir das Bild.
 2. 🔮 **Rate:** Was passiert bei **m=2, b=1**? Steiler oder flacher? Dann stelle ein und **prüfe**.
 3. 🔮 **Rate:** Was passiert bei **m=2, b=3**? Hoch oder runter? Dann stelle ein und **prüfe**.
-4. **Erkläre:** Was ändert m? Was ändert b? Sage es in 2 Sätzen.
+4. **Erkläre:** Was ändert m? Was ändert b? Sage 2 Sätze.
 
-So lernt dein Gehirn den Unterschied – nicht durch Zufall, sondern durch Vergleich.
+Du vergleichst 2 Bilder. So siehst du den Unterschied.
 
 </div>
 
@@ -231,9 +241,9 @@ So lernt dein Gehirn den Unterschied – nicht durch Zufall, sondern durch Vergl
 
 ---
 
-## 4. Die Steigung m – ganz ausführlich
+## 4. Die Steigung m – in Ruhe
 
-Das ist der wichtigste Teil. Nimm dir Zeit. Nur m, b bleibt 0.
+Hier geht es nur um m. b bleibt 0. Nimm dir Zeit.
 
 ### 4a. Was fühlt sich die Steigung an?
 
@@ -251,7 +261,7 @@ Stell dir einen **Bergweg** vor:
 const g4a_pred = view(Inputs.radio(["es geht hoch", "es geht runter", "es ist flach"], {label: "Rate: m = -2. Was erwartest du?"}));
 ```
 
-${g4a_pred ? "Gut geraten. Jetzt **bewege nur den m-Regler** unten auf -2 und **prüfe**. Warst du überrascht? Dann erkläre warum." : "⬜ Rate zuerst – Raten hilft lernen, auch wenn es falsch ist."}
+${g4a_pred ? "Gut geraten. Jetzt **bewege nur den m-Regler** unten auf -2 und **prüfe**. Stimmt deine Vermutung? Erkläre warum." : "⬜ Rate zuerst. Falsch raten ist erlaubt."}
 
 ```js
 const gm_gef = view(Inputs.range([-3, 3], {value: 1, step: 0.5, label: "m – Steigung (bewege nur mich)"}));
@@ -295,9 +305,9 @@ const g4a_q1 = view(Inputs.radio(["m = 3", "m = 0,5", "m = -3"], {label: "Welche
 
 ${g4a_q1 === "m = 3" ? "✅ **Richtig.** Groß + plus = steil hoch." : g4a_q1 === "m = 0,5" ? "❌ Das ist **flach** hoch. Groß heißt steil (z.B. 3)." : g4a_q1 ? "❌ Minus heißt **runter**. Gesucht ist hoch + steil = m = 3." : "⬜ Wähle eine Antwort."}
 
-### 4b. Das Steigungsdreieck – der Trick
+### 4b. Das Steigungsdreieck – so liest du m am Bild ab
 
-So merkst du dir m ganz leicht:
+So merkst du dir m:
 
 > **Gehe 1 nach rechts. Dann gehe m nach oben.**
 
@@ -341,7 +351,7 @@ const gm_drei = view(Inputs.range([-3, 3], {value: 2, step: 0.5, label: "m – S
 - **Grün**: ${gm_drei} nach ${gm_drei >= 0 ? "oben" : "unten"}.
 - Zusammen zeigen sie dir die Steigung.
 
-Mach das im Heft auch so: Male ein kleines Dreieck an die Gerade. Dann siehst du m sofort.
+Mach das im Heft auch so: Male ein kleines Dreieck an die Gerade. Dann siehst du m ohne zu rechnen.
 
 🩺 **Mini-Check:**
 
@@ -362,7 +372,7 @@ Stell dir nur drei Bilder vor:
 Probiere alle drei mit dem Regler oben aus.
 Frage dich immer: **Hoch oder runter? Steil oder flach?**
 
-🩺 **Hinge-Frage (Weiter nur wenn richtig):**
+🩺 **Stopp-Frage – erst weiter, wenn das sitzt:**
 
 ```js
 const g4c_q1 = view(Inputs.radio(["flache, waagerechte Linie", "steile Linie nach oben", "senkrechte Linie"], {label: "Was bedeutet m = 0?"}));
@@ -372,7 +382,7 @@ ${g4c_q1 === "flache, waagerechte Linie" ? "✅ **Richtig.** m=0 → kein Hoch, 
 
 ### 4d. Steigung aus zwei Punkten rechnen
 
-Manchmal hast du zwei Punkte. Kein Bild.
+Manchmal hast du zwei Punkte und kein Bild.
 Dann rechnest du so:
 
 <div class="card" style="border-left: 6px solid #16a34a;">
@@ -394,7 +404,7 @@ Punkt A = (1 | 1). Punkt B = (3 | 5).
 3. Teilen: 4 : 2 = 2.
 4. Also: **m = 2**.
 
-🩺 **Mini-Check (häufigster Fehler: vertauscht teilen):**
+🩺 **Mini-Check – aufgepasst beim Teilen:**
 
 ```js
 const g4d_q1 = view(Inputs.radio(["m = 2", "m = 0,5", "m = 4"], {label: "A(1|1), B(3|5). Was ist m?"}));
@@ -449,20 +459,20 @@ const gby = view(Inputs.range([-5, 5], {value: 5, step: 1, label: "By"}));
 
 Rechnung für deine Punkte A(${gax} | ${gay}) und B(${gbx} | ${gby}):
 
-Das Beispiel oben zeigt die Start-Einstellung der Regler. **Verstelle die Regler – diese Rechnung rechnet mit:**
+**Verstelle die Regler – diese Rechnung rechnet mit:**
 
 1. y-Unterschied: y<sub>2</sub> – y<sub>1</sub> = ${gby} – ${gay} = ${gby - gay}
 2. x-Unterschied: x<sub>2</sub> – x<sub>1</sub> = ${gbx} – ${gax} = ${gbx - gax}
 3. Teilen: m = ${gby - gay} : ${gbx - gax} = ${(gbx - gax) === 0 ? "nicht möglich" : ((gby - gay)/(gbx - gax)).toFixed(2)}
 4. Also: **m = ${(gbx - gax) === 0 ? "nicht möglich (senkrecht)" : ((gby - gay)/(gbx - gax)).toFixed(2)}**.
 
-Wenn unten 0 rauskommt, ist die Linie **senkrecht**. Dann gibt es kein m. Das ist der **Grenzfall** – merke ihn dir extra.
+Wenn unten 0 rauskommt, ist die Linie **senkrecht**. Durch 0 teilen geht nicht. Dann gibt es kein m. Merke dir diesen Sonderfall.
 
 ---
 
 ## 5. Der Startwert b – wo startet die Linie?
 
-**b** ist ganz einfach:
+**b** geht so:
 
 > **b sagt, wo die Linie die y-Achse schneidet.**
 > Also bei x = 0.
@@ -506,7 +516,7 @@ Dort ist **(0 | b)**. Steil bleibt gleich – es rutscht nur hoch/runter.
 
 </div>
 
-🩺 **Mini-Check (Verwechslung mit Nullstelle):**
+🩺 **Mini-Check – b oder Nullstelle?**
 
 ```js
 const g5_q1 = view(Inputs.radio(["b = 3", "b = 0", "b = dort wo y = 0 ist"], {label: "Linie geht durch (0 | 3). Was ist b?"}));
@@ -560,9 +570,44 @@ Deine Gerade heißt jetzt **y = ${String(gm_end).replace(".", ",")} · x ${gb_en
 - Startpunkt: (0 | ${gb_end})
 - Zweiter Punkt mit Dreieck: (1 | ${gm_end + gb_end})
 
+<div class="card" style="border-left: 6px solid #7c3aed;">
+
+**Sage es in einem Satz (Sprachhilfe):**
+
+„Die Gerade steigt / fällt, weil m = … Sie startet bei (0 | …), weil b = …"
+
+Beispiel: „Die Gerade steigt mittel, weil m = 1. Sie startet bei (0 | 0), weil b = 0."
+
+</div>
+
 ---
 
-## 🎫 Exit-Ticket – darfst du weiter?
+## 7. Nullstelle – wo trifft die Gerade die x-Achse?
+
+**Nullstelle** heißt: **y = 0**. Du suchst den Punkt auf der waagerechten x-Achse.
+
+👀 **Ich zeige – Beispiel:** y = 2 · x + 1. Setze y = 0:
+
+0 = 2 · x + 1 | -1
+-1 = 2 · x | :2
+x = -0,5. Die Nullstelle ist (-0,5 | 0).
+
+Merke dir den Unterschied:
+
+- **Startwert b** ist bei **x = 0**. Punkt (0 | b).
+- **Nullstelle** ist bei **y = 0**. Punkt (x | 0).
+
+```js
+const g7_q1 = view(Inputs.radio(["(-0,5 | 0)", "(0 | 1)", "(0 | -0,5)"], {label: "y = 2·x + 1. Was ist die Nullstelle?"}));
+```
+
+${g7_q1 === "(-0,5 | 0)" ? "✅ **Richtig.** y=0 setzen und nach x auflösen." : g7_q1 === "(0 | 1)" ? "❌ Das ist der **Startwert b**, nicht die Nullstelle. Nullstelle hat immer y=0." : g7_q1 ? "❌ Rechne: 0 = 2·x+1 → x = -0,5. Punkt (-0,5 | 0)." : "⬜ Wähle eine Antwort."}
+
+Das brauchst du gleich wieder bei den Parabeln. Dort heißt es auch: y = 0 setzen.
+
+---
+
+## Exit-Ticket – darfst du weiter?
 
 Erst weiter zu Parabeln, wenn 2 von 3 stimmen. Sonst oben noch einmal schauen.
 
@@ -591,11 +636,12 @@ ${g6_q3 === "(0 | 1) und (1 | 3)" ? "✅ **Richtig.** Einsetzen prüfen: 2·0+1=
 **Geschafft! Das kannst du jetzt:**
 
 - Du findest Punkte (x | y).
-- Du machst eine Wertetabelle.
-- Du weißt: m = hoch/runter + steil/flach.
-- Du weißt: b = Start auf der y-Achse.
-- Du zeichnest eine Gerade mit 2 Punkten + Lineal.
+- Du machst eine Wertetabelle: einsetzen, mal rechnen, plus rechnen.
+- Du sagst: m = hoch / runter + steil / flach.
+- Du sagst: b = Start auf der y-Achse, Punkt (0 | b).
+- Du zeichnest eine Gerade mit 2 Punkten und Lineal.
+- Du findest die Nullstelle mit y = 0.
 
-Weiter geht es mit [Parabeln](./parabeln). Dort ist alles **gebogen**. Aber die Wertetabelle kennst du schon – sie wird **abgerufen**, nicht neu gelernt!
+Weiter geht es mit [Parabeln](./parabeln). Dort ist alles **gebogen**. Die Wertetabelle kannst du schon. Du rufst sie nur wieder ab.
 
 </div>

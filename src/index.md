@@ -1,38 +1,38 @@
 ---
-title: Start – Geraden und Parabeln ganz einfach
+title: Start – Geraden und Parabeln Schritt für Schritt
 toc: true
 ---
 
-# Geraden und Parabeln – ganz einfach verstehen
+# Geraden und Parabeln – Schritt für Schritt verstehen
 
-Hallo! Hier lernst du **zuerst Geraden**, **dann Parabeln**.
+Hallo! Hier lernst du zuerst Geraden, dann Parabeln.
 
-Ganz langsam. Schritt für Schritt.
-Mit Bildern, die du selbst bewegen kannst.
+Du arbeitest langsam und Schritt für Schritt, mit Bildern, die du selbst bewegst.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**So lernst du hier – immer gleich. Das hilft deinem Gehirn:**
+**So arbeitest du auf jeder Seite:**
 
 1. 🔁 **Abrufen:** Ganz kurz wiederholen, was du schon kannst.
-2. 👀 **Ich zeige:** Du schaust ein fertiges Beispiel an. Nur schauen.
+2. 👀 **Ich zeige:** Du schaust dir ein fertiges Beispiel an. Nur lesen.
 3. 🔮 **Denke – Rate – Prüfe:** Du rätst zuerst. Dann bewegst du den Regler und prüfst.
-4. 🩺 **Mini-Check:** 1 Frage zum Ankreuzen. So merkst du sofort, ob es sitzt.
+4. 🩺 **Mini-Check:** 1 Frage zum Ankreuzen. Du siehst sofort, ob es sitzt.
 
-Du musst nichts auswendig können.
 Du sollst **verstehen, was du siehst**.
 
 </div>
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
-**Merke dir diese 3 Wörter:**
+**Merke dir diese 3 Sätze:**
 
 - **x** geht nach **rechts**.
 - **y** geht nach **oben**.
-- Ein **Punkt** heißt immer **(x | y)**.
+- Ein **Punkt** heißt immer **(x | y)**. Beispiel: (2 | 1) heißt x = 2 und y = 1.
 
-Das brauchst du überall.
+Achtung, zwei verschiedene Zeichen: Das **Komma** ist ein Dezimalkomma wie in 2,5. Der **Strich |** trennt x und y. Bei (2,5 | 1,5) ist also x = 2,5 und y = 1,5.
+
+Das brauchst du auf jeder Seite.
 
 </div>
 
@@ -40,39 +40,39 @@ Das brauchst du überall.
 
 Wenn du hier fertig bist, kannst du:
 
-- [ ] einen Punkt wie (3 | 2) im Heft finden
-- [ ] eine Gerade mit **y = m · x + b** erklären und zeichnen
-- [ ] eine Parabel mit **Scheitel** und **Nullstellen** erklären
+- [ ] einen Punkt wie (3 | 2) im Heft finden und einzeichnen
+- [ ] eine Gerade mit **y = m · x + b** erklären und mit 2 Punkten zeichnen
+- [ ] eine Parabel mit **Scheitel** und **Nullstellen** erklären und prüfen
 
-Hake im Kopf ab. Wenn etwas noch nicht geht, gehe zurück.
+Sage jedes Ziel laut in einem Satz. Wenn ein Satz noch nicht geht, gehe zurück.
 
 ## Dein Lern-Weg
 
 ### Schritt 1: Geraden
 
-Eine Gerade ist **gerade**. Wie ein Lineal-Strich.
+Eine Gerade sieht aus wie ein Strich mit dem Lineal.
 
 Du lernst in Mini-Schritten (immer nur 1 Neues):
 
 - Was ein Koordinatensystem ist
 - Was eine Wertetabelle ist
-- Was die **Steigung m** ist (ganz ausführlich)
-- Was der **Startwert b** ist
+- Was die **Steigung m** ist (hoch oder runter, steil oder flach)
+- Was der **Startwert b** ist (Start auf der y-Achse)
 - Was **y = m · x + b** bedeutet
 
 <a href="./geraden">👉 Jetzt mit Geraden starten</a>
 
 ### Schritt 2: Parabeln
 
-Eine Parabel ist **gebogen**. Wie ein U. Wie ein Ball, der fliegt.
+Eine Parabel ist **gebogen**. Sie sieht aus wie ein U. So fliegt zum Beispiel ein Ball: hoch und wieder runter.
 
 Du lernst:
 
-- Wieder: Was eine Wertetabelle ist
-- Was **Normalform** und **Scheitelpunktform** sind
-- Was der **Scheitelpunkt** ist und wie man ihn ausrechnet
-- Was die **Diskriminante** ist
-- Was die **abc-Formel** ist
+- Wieder: Was eine Wertetabelle ist (das kannst du schon von den Geraden)
+- Was **Normalform** und **Scheitelpunktform** sind (zwei Namen für die gleiche Parabel)
+- Was der **Scheitelpunkt** ist und wie du ihn ausrechnest
+- Was die **Diskriminante D** ist (sie sagt dir, wie viele Nullstellen es gibt)
+- Was die **abc-Formel** ist (damit rechnest du die Nullstellen aus)
 
 <a href="./parabeln">👉 Danach mit Parabeln weiter machen</a>
 
@@ -87,9 +87,9 @@ Alle Bilder hier sind gleich:
 
 ---
 
-## 🔮 Erst denken, dann schieben
+## Erst denken, dann schieben
 
-Wir üben gleich die wichtigste Bewegung: **Denke – Rate – Prüfe.**
+Wir üben jetzt den Ablauf, den du überall brauchst: **Denke – Rate – Prüfe.**
 
 **Denke:** Die erste Zahl ist x (rechts). Die zweite Zahl ist y (oben).
 
@@ -138,7 +138,7 @@ Erste Zahl = x. Zweite Zahl = y.
 
 ---
 
-## 🩺 Mini-Check zum Start
+## Mini-Check zum Start
 
 ```js
 const start_q2 = view(Inputs.radio(["genau auf einer Kreuzung", "mitten im Kästchen, zwischen den Linien", "das geht gar nicht"], {label: "Wo liegt (2,5 | 1,5)?"}));
@@ -148,4 +148,10 @@ ${start_q2 === "mitten im Kästchen, zwischen den Linien" ? "✅ **Richtig.** Ko
 
 ---
 
-Bereit? Dann gehe zu [Geraden](./geraden). Dort beginnt jeder Abschnitt mit 🔁 Abrufen.
+<div class="card" style="border-left: 6px solid #16a34a;">
+
+**Ins Heft:** Zeichne ein kleines Koordinatensystem von -3 bis 3. Trage (2 | 1) und (2,5 | 1,5) ein. Schreibe darunter: „x geht nach rechts, y geht nach oben. (x | y)."
+
+</div>
+
+Bereit? Dann gehe zu [Geraden](./geraden). Dort beginnt jeder Abschnitt mit Abrufen.
