@@ -197,7 +197,7 @@ const gb_tab = view(Inputs.range([-3, 3], {value: 1, step: 1, label: "b – Star
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
-    y: {domain: [-8, 8], label: "↑ y", grid: true},
+    y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
       Plot.ruleX([0], {strokeWidth: 2}),
       Plot.ruleY([0], {strokeWidth: 2}),

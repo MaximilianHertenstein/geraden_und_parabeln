@@ -159,7 +159,7 @@ const pa_tab = view(Inputs.range([-2, 2], {value: 1, step: 0.5, label: "a – vo
     width,
     aspectRatio: 1,
     x: {domain: [-5, 5], label: "x →", grid: true, ticks: 11},
-    y: {domain: [-2, 8], label: "↑ y", grid: true},
+    y: {domain: [-2, 8], label: "↑ y", grid: true, ticks: 11},
     marks: [
       Plot.ruleX([0], {strokeWidth: 2}),
       Plot.ruleY([0], {strokeWidth: 2}),

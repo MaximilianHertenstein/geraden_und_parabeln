@@ -9,6 +9,7 @@ export default {
       pages: [
         {name: "Start", path: "/index"},
         {name: "1. Geraden", path: "/geraden"},
+        {name: "1a. Wertetabelle & Steigungsdreieck", path: "/wertetabelle"},
         {name: "2. Parabeln", path: "/parabeln"}
       ]
     }
