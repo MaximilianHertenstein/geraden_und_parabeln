@@ -1,21 +1,21 @@
 ---
-title: Wertetabelle & Steigungsdreieck
+title: Geradengleichungen verstehen
 toc: true
 ---
 
-# Wertetabelle erstellen und das Steigungsdreieck sehen
+# Geradengleichungen verstehen
 
 Hier lernst du **drei Dinge**:
 
-1. Wie du zu einer Geraden **y = m · x + b** eine **Wertetabelle** ausrechnest und die Punkte einzeichnest.
-2. Wie du in der Zeichnung das **Steigungsdreieck** erkennst und warum es genau **m** ist, das du dort siehst.
-3. Wie du umgekehrt aus einer fertigen Zeichnung m, b und die ganze Geradengleichung wieder herausfindest.
+1. Wie du zu **y = m · x + b** eine Wertetabelle erstellst und die Punkte einzeichnest.
+2. Wie du die Steigung m mit einem Steigungsdreieck abliest.
+3. Wie du aus einer Zeichnung m, b und die Geradengleichung herausfindest.
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
 ```
 
-Wir benutzen die **ganze Seite über dieselbe Gerade**. Stelle hier **m** und **b** ein: die Rechnung, die Tabelle und die Zeichnung ändern sich unten automatisch mit:
+Wir benutzen auf der ganzen Seite dieselbe Gerade. Stelle **m** und **b** mit den Reglern ein. Die Rechnungen, die Tabelle und die Zeichnungen ändern sich mit.
 
 ```js
 const wmInput = Inputs.range([-3, 3], {value: 2, step: 0.5, label: "m – Steigung"});
@@ -29,8 +29,8 @@ const wb = view(wbInput);
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
-**m** ist die Zahl, die mit x multipliziert wird. Gerade ist **m = ${String(wm).replace(".", ",")}**.
-**b** ist die Zahl, bei der kein x steht. Sie steht ganz allein. Gerade ist **b = ${String(wb).replace(".", ",")}**.
+**m** ist die Zahl, die mit x malgenommen wird. Hier ist **m = ${String(wm).replace(".", ",")}**.
+**b** ist die Zahl ohne x. Hier ist **b = ${String(wb).replace(".", ",")}**.
 
 </div>
 
@@ -42,7 +42,7 @@ Unsere Gerade lautet gerade: **y = ${String(wm).replace(".", ",")} · x ${wb >= 
 
 Eine Wertetabelle ist eine **Rechen-Hilfe**. So gehst du dabei vor:
 
-**Erst die ganze Tabelle füllen:** Schreibe dir zuerst ein paar x-Werte auf, z. B. -2, -1, 0, 1, 2. Rechne dann für **jeden einzelnen** x-Wert das passende y aus und trage es direkt darunter ein. Du füllst also erst die ganze Tabelle, bevor du irgendetwas zeichnest.
+Schreibe zuerst die x-Werte -2, -1, 0, 1 und 2 auf. Rechne für jeden x-Wert das passende y aus. Trage es in die Zeile darunter ein. Fülle die ganze Tabelle, bevor du zeichnest.
 
 Rechne zuerst **mal**, dann **plus** (bzw. minus): **y = m · x + b**.
 
@@ -72,7 +72,7 @@ Diese zwei Ergebnisse tragen wir jetzt in die Tabelle ein. Die restlichen Spalte
 
 ### Die fertige Wertetabelle
 
-Eine Zeile ist **x**, die Zeile darunter ist **y**. Damit du siehst, wie es gemeint ist: eine ganze Spalte gehört zusammen und ist **ein Punkt**.
+Oben stehen die x-Werte, darunter die y-Werte.
 
 ```js
 {
@@ -91,14 +91,14 @@ Eine Zeile ist **x**, die Zeile darunter ist **y**. Damit du siehst, wie es geme
 }
 ```
 
-**Erst jetzt schauen wir auf die Punkte:** Eine Spalte ist die x- und die y-Koordinate von genau **einem Punkt (x | y)**. Trage jetzt alle diese Punkte ein.
+Eine Spalte enthält die beiden Zahlen für **einen Punkt (x | y)**. Trage alle Punkte in das Koordinatensystem ein.
 
 **Konkretes Beispiel:** Die erste Spalte hat oben x = -2 und darunter y = ${String(wm * -2 + wb).replace(".", ",")}. Das ist zusammen der Punkt **(-2 | ${String(wm * -2 + wb).replace(".", ",")})**.
 
 <div class="card" style="border-left: 6px solid #f59e0b;">
 
 **Merke:**
-Jede **Spalte** der Tabelle ist ein Punkt: oben steht x, darunter das passende y. Trägst du alle Spalten als Punkte ein, siehst du schon, dass sie auf einer geraden Linie liegen, auch ohne dass die Linie schon gezeichnet ist.
+Jede **Spalte** der Tabelle ist ein Punkt: oben steht x, darunter das passende y. Alle Punkte liegen auf einer geraden Linie.
 
 </div>
 
@@ -207,13 +207,13 @@ const wAenderung0 = fmtW((wm * -1 + wb) - (wm * -2 + wb));
 }
 ```
 
-Schau dir z. B. die erste Zeile an: **y geht von ${wYVon0} auf ${wYAuf0}, also eine Änderung um ${wAenderung0}.** Die letzte Spalte zeigt in jeder Zeile denselben Wert: **m = ${String(wm).replace(".", ",")}**. Das ist kein Zufall, denn bei „1 nach rechts" ändert sich y immer genau um m.
+In der ersten Zeile geht **y von ${wYVon0} auf ${wYAuf0}**. Das ist eine Änderung um **${wAenderung0}**. In der letzten Spalte steht jedes Mal derselbe Wert: **m = ${String(wm).replace(".", ",")}**. Wenn du 1 nach rechts gehst, ändert sich y immer um m.
 
 Genau das ist das **Steigungsdreieck**:
 
-> **Gehe 1 nach rechts. Dann gehe in y-Richtung (hoch oder runter), bis du wieder auf der Geraden stehst. Miss nach, wie weit du gehen musstest. Du wirst feststellen: Das ist genau m.**
+> **Gehe 1 nach rechts. Gehe dann nach oben oder unten, bis du wieder auf der Geraden bist. Schau nach, wie weit du gegangen bist. Die Änderung ist m.**
 
-**Jetzt die Zeichnung dazu**: hier sind **zwei Steigungsdreiecke an zwei verschiedenen Stellen** der Geraden eingezeichnet. Sie zeigen beide dasselbe: 1 nach rechts, m nach oben.
+In der Zeichnung siehst du **zwei Steigungsdreiecke** an verschiedenen Stellen der Geraden. Beide zeigen: 1 nach rechts und dann um m nach oben oder unten.
 
 ```js
 {
@@ -273,7 +273,7 @@ Das liegt genau daran, dass in y = m · x + b die Zahl **m** mit x multipliziert
 
 </div>
 
-Probiere es aus: Stelle oben **m** und **b** anders ein. Rechne die Tabelle neu, zeichne die Punkte, und du wirst sehen, dass das Steigungsdreieck sich zwar ändert (steiler/flacher, hoch/runter), aber überall auf derselben Geraden gleich groß bleibt.
+Stelle **m** und **b** anders ein. Rechne die Tabelle neu und zeichne die Punkte. Die Steigungsdreiecke können dann anders aussehen. Auf derselben Geraden sind sie aber immer gleich groß.
 
 ---
 
@@ -309,9 +309,15 @@ Schau dir noch einmal die Spalte mit **x = 0** in der Tabelle an: dort steht unt
 }
 ```
 
-y = m · 0 + b = 0 + b = **b**. Das x fällt dabei komplett weg, egal welchen Wert m hat, übrig bleibt immer nur **b**. Deshalb liegt der Punkt **(0 | b)** auf der Geraden, ganz egal wie steil (m) sie ist.
+Setze bei der aktuellen Geraden **x = 0** ein:
 
-**Probiere es an der Zeichnung aus:** Bewege oben nur den **m**-Regler hin und her. Die Gerade dreht sich, aber der orange Punkt bleibt immer an derselben Stelle stehen. Bewege jetzt stattdessen nur den **b**-Regler: Die Gerade verschiebt sich nach oben oder unten (sie dreht sich nicht), und der orange Punkt wandert mit ihr mit.
+**y = ${String(wm).replace(".", ",")} · 0 ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")} = 0 ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")} = ${String(wb).replace(".", ",")}**
+
+Der Schnittpunkt mit der y-Achse ist **(0 | ${String(wb).replace(".", ",")})**. Allgemein gilt y = m · 0 + b = b. Der Punkt **(0 | b)** liegt also auf der Geraden. Das gilt für jedes m.
+
+Bewege nur den **m**-Regler. Die Gerade dreht sich. Der orange Punkt bleibt an derselben Stelle.
+
+Bewege jetzt nur den **b**-Regler. Die Gerade verschiebt sich nach oben oder unten. Der orange Punkt wandert mit. Die Gerade dreht sich dabei nicht.
 
 ```js
 {
@@ -346,7 +352,7 @@ y = m · 0 + b = 0 + b = **b**. Das x fällt dabei komplett weg, egal welchen We
 
 ## 5. Die Geradengleichung an der Zeichnung erkennen
 
-Manchmal siehst du nur das Bild einer Geraden, ganz ohne Gleichung dazu. Mit der Steigungsdreieck-Methode von eben findest du m und b trotzdem.
+Du siehst eine Gerade ohne Gleichung. Mit dem Steigungsdreieck findest du m. Danach liest du b ab.
 
 ```js
 const geheimClick = view(Inputs.button("Neue zufällige Gerade zeigen"));
@@ -366,7 +372,7 @@ const geheim = (() => {
 
 ### Schritt 1: m mit dem Steigungsdreieck finden
 
-Nimm einen beliebigen Punkt auf der Geraden. Gehe von dort 1 nach rechts. Gehe dann in y-Richtung (hoch oder runter), bis du wieder auf der Geraden stehst. Die Strecke, die du dabei in y-Richtung gelaufen bist, ist genau m.
+Nimm einen Punkt auf der Geraden. Gehe von dort 1 nach rechts. Gehe dann nach oben oder unten, bis du wieder auf der Geraden bist. Die Änderung in y-Richtung ist m.
 
 ```js
 {

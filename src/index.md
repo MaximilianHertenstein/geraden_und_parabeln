@@ -3,20 +3,18 @@ title: Start – Geraden und Parabeln Schritt für Schritt
 toc: true
 ---
 
-# Geraden und Parabeln – Schritt für Schritt verstehen
+# Geraden und Parabeln verstehen
 
-Hallo! Hier lernst du zuerst Geraden, dann Parabeln.
-
-Du arbeitest langsam und Schritt für Schritt, mit Bildern, die du selbst bewegst.
+Hier lernst du Geraden und Parabeln kennen. Du kannst die Bilder mit den Reglern verändern.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**Ablauf auf jeder Seite:**
+**So kannst du lernen:**
 
-1. 🔁 **Abrufen:** Kurz wiederholen, was schon ging.
-2. 👀 **Ich zeige:** Fertiges Beispiel, nur lesen.
-3. 🔮 **Denke – Rate – Prüfe:** Erst raten, dann Regler bewegen.
-4. 🩺 **Mini-Check:** 1 Frage. Du siehst sofort, wo du stehst.
+1. Wiederhole, was du schon kannst.
+2. Schau dir ein Beispiel an.
+3. Überlege zuerst. Prüfe dann mit den Reglern.
+4. Beantworte die Fragen und lies die Rückmeldung.
 
 </div>
 
@@ -28,13 +26,13 @@ Du arbeitest langsam und Schritt für Schritt, mit Bildern, die du selbst bewegs
 - **y** geht nach **oben**.
 - Ein **Punkt** heißt immer **(x | y)**. Beispiel: (2 | 1) heißt x = 2 und y = 1.
 
-Achtung, zwei verschiedene Zeichen: Das **Komma** ist ein Dezimalkomma wie in 2,5. Der **Strich |** trennt x und y. Bei (2,5 | 1,5) ist also x = 2,5 und y = 1,5.
+Das **Komma** steht in einer Kommazahl wie 2,5. Der **Strich |** trennt x und y. Bei (2,5 | 1,5) ist x = 2,5 und y = 1,5.
 
 Das brauchst du auf jeder Seite.
 
 </div>
 
-## Deine Ziele – das kannst du danach
+## Deine Ziele
 
 Wenn du hier fertig bist, kannst du:
 
@@ -42,13 +40,15 @@ Wenn du hier fertig bist, kannst du:
 - [ ] eine Gerade mit **y = m · x + b** erklären und mit 2 Punkten zeichnen
 - [ ] eine Parabel mit **Scheitel** und **Nullstellen** erklären und prüfen
 
-Kreuz im Kopf an – was geht schon? Der Rest kommt auf den nächsten Seiten.
+Überlege, was du schon kannst. Die übrigen Themen findest du auf den nächsten Seiten.
 
 ## Dein Lern-Weg
 
 ### Schritt 1: Geraden
 
 Eine Gerade sieht aus wie ein Strich mit dem Lineal.
+
+Auf der Seite [Geradengleichungen verstehen](./geradengleichungen) erstellst du Wertetabellen. Du lernst auch, wie du eine Geradengleichung aus einer Zeichnung abliest.
 
 Du lernst in Mini-Schritten (immer nur 1 Neues):
 
@@ -58,11 +58,13 @@ Du lernst in Mini-Schritten (immer nur 1 Neues):
 - Was der **Startwert b** ist (Start auf der y-Achse)
 - Was **y = m · x + b** bedeutet
 
-<a href="./geraden">👉 Jetzt mit Geraden starten</a>
+<a href="./alternative/geraden">👉 Jetzt mit Geraden starten</a>
 
 ### Schritt 2: Parabeln
 
 Eine Parabel ist **gebogen**. Sie sieht aus wie ein U. So fliegt zum Beispiel ein Ball: hoch und wieder runter.
+
+Auf der Seite [Parabeln zeichnen](./parabeln-zeichnen) erstellst du eine Wertetabelle. Mit den Werten zeichnest du eine Parabel.
 
 Du lernst:
 
@@ -72,7 +74,7 @@ Du lernst:
 - Was die **Diskriminante D** ist (sie sagt dir, wie viele Nullstellen es gibt)
 - Was die **abc-Formel** ist (damit rechnest du die Nullstellen aus)
 
-<a href="./parabeln">👉 Danach mit Parabeln weiter machen</a>
+<a href="./alternative/parabeln">👉 Danach mit Parabeln weiter machen</a>
 
 ## Wichtig für alle Bilder
 
@@ -87,7 +89,7 @@ Alle Bilder hier sind gleich:
 
 ## Erst denken, dann schieben
 
-Der Ablauf hier: **Denke – Rate – Prüfe.**
+Überlege zuerst. Prüfe deine Antwort danach mit dem Bild.
 
 **Denke:** Die erste Zahl ist x (rechts). Die zweite Zahl ist y (oben).
 
@@ -109,7 +111,7 @@ const start_conf = view(Inputs.radio(["sicher", "eher geraten"], {label: "Wie si
 
 ${start_conf === "sicher" ? "Okay. Dann prüf unten kurz, ob es stimmt." : start_conf ? "Geraten ist okay. Prüf unten extra genau." : "⬜ Kurz ankreuzen."}
 
-Jetzt **prüfe** mit dem Bild. Stelle genau das ein, was du oben angekreuzt hast. Es gehen auch **Kommazahlen**, zum Beispiel (2,5 | 1,5). Dann liegt der Punkt zwischen zwei Linien:
+Prüfe deine Antwort mit dem Bild. Stelle dazu die Werte ein, die du oben angekreuzt hast. Es gehen auch **Kommazahlen**, zum Beispiel (2,5 | 1,5). Dann liegt der Punkt zwischen zwei Linien:
 
 ```js
 const px_start = view(Inputs.range([-5, 5], {value: 2, step: 0.5, label: "x – nach rechts"}));
@@ -138,11 +140,11 @@ Du siehst: Der Punkt heißt **(${String(px_start).replace(".", ",")} | ${String(
 
 Erste Zahl = x. Zweite Zahl = y.
 
-Kurzer Check: Kannst du sagen „x geht nach …, y geht nach …"? Dann weiter.
+Kannst du sagen, in welche Richtung x und y größer werden?
 
 ---
 
-## Mini-Check zum Start
+## Eine Frage zum Start
 
 ```js
 const start_q2 = view(Inputs.radio(["genau auf einer Kreuzung", "mitten im Kästchen, zwischen den Linien", "das geht gar nicht"], {label: "Wo liegt (2,5 | 1,5)?"}));
@@ -158,4 +160,4 @@ ${start_q2 === "mitten im Kästchen, zwischen den Linien" ? "✅ **Richtig.** Ko
 
 </div>
 
-Bereit? Dann weiter zu [Geraden](./geraden).
+Bereit? Dann weiter zu [Geraden](./alternative/geraden).

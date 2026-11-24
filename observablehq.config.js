@@ -8,9 +8,20 @@ export default {
       name: "Lernen",
       pages: [
         {name: "Start", path: "/index"},
-        {name: "1. Geraden", path: "/geraden"},
-        {name: "1a. Wertetabelle & Steigungsdreieck", path: "/wertetabelle"},
-        {name: "2. Parabeln", path: "/parabeln"}
+        {name: "Geradengleichungen", path: "/geradengleichungen"},
+        {name: "Parabeln zeichnen", path: "/parabeln-zeichnen"},
+        {name: "Achsenschnittpunkte", path: "/achsenschnittpunkte"},
+        {name: "Punktprobe", path: "/punktprobe"},
+        {name: "Parallele Geraden", path: "/parallele-geraden"},
+        {name: "Schnittpunkte von Geraden", path: "/schnittpunkte-geraden"},
+        {name: "Steigung als Bruch", path: "/steigung-als-bruch"}
+      ]
+    },
+    {
+      name: "Alternative",
+      pages: [
+        {name: "Geraden", path: "/alternative/geraden"},
+        {name: "Parabeln", path: "/alternative/parabeln"}
       ]
     }
   ],

@@ -3,24 +3,20 @@ title: Geraden verstehen
 toc: true
 ---
 
-# Geraden – Schritt für Schritt
+# Geraden Schritt für Schritt
 
 Eine Gerade sieht aus wie ein Strich mit dem Lineal.
 
-Wir machen eine Sache nach der anderen (immer nur 1 Neues pro Schritt):
-Zuerst nur das Koordinatensystem.
-Dann nur die Tabelle.
-Dann nur die Steigung.
-Dann nur der Startwert.
+Zuerst geht es um das Koordinatensystem. Danach lernst du die Wertetabelle, die Steigung und den Startwert kennen.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
 **Ablauf in jedem Abschnitt:**
 
-1. 🔁 **Abrufen** – 1 kurze Frage zu vorher.
-2. 👀 **Ich zeige** – fertiges Beispiel, nur lesen.
-3. 🔮 **Denke – Rate – Prüfe** – erst raten, dann Regler bewegen.
-4. 🩺 **Mini-Check** – ankreuzen, sofort Rückmeldung lesen.
+1. Wiederhole, was du schon kannst.
+2. Schau dir ein Beispiel an.
+3. Überlege zuerst. Prüfe dann mit den Reglern.
+4. Beantworte die Fragen und lies die Rückmeldung.
 
 **Deine Ziele:** Danach findest du Punkte, rechnest eine Wertetabelle, erklärst **m** und **b** und zeichnest jede Gerade mit 2 Punkten.
 
@@ -32,9 +28,9 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 ---
 
-## 0. Abrufen – was du vom Start kannst
+## 0. Wiederholung
 
-Ohne Bild – nur aus dem Kopf.
+Beantworte die Fragen zuerst ohne Bild.
 
 ```js
 const g0_q1 = view(Inputs.radio(["3 nach rechts, 2 nach oben", "3 nach oben, 2 nach rechts", "3 und 2 sind egal"], {label: "Was heißt (3 | 2)?"}));
@@ -50,7 +46,7 @@ ${g0_q2 === "(0 | 0), die Mitte" ? "✅ **Richtig.** Das ist der **Ursprung**." 
 
 ---
 
-## 1. Das Koordinatensystem – wie in deinem Heft
+## 1. Das Koordinatensystem
 
 Schau dir das Bild an:
 
@@ -60,13 +56,13 @@ Schau dir das Bild an:
 
 Ein Punkt hat immer 2 Zahlen: **(x | y)**.
 
-👀 **Ich zeige – Beispiel:** **(3 | 2)** heißt:
+**Beispiel:** **(3 | 2)** heißt:
 Gehe 3 nach rechts. Dann 2 nach oben. Dort ist der Punkt.
 
 Es gehen auch **Kommazahlen**, zum Beispiel **(2,5 | 1,5)**.
 Der Punkt liegt dann zwischen zwei Linien, mitten im Kästchen.
 
-🔮 **Denke – Rate – Prüfe.** Wo liegt (3 | 2)? Rechts-oben oder links-unten? Merke dir deine Vermutung. Dann prüfe mit den Reglern:
+Wo liegt (3 | 2)? Rechts oben oder links unten? Überlege zuerst. Prüfe dann mit den Reglern:
 
 ```js
 const gx = view(Inputs.range([-5, 5], {value: 3, step: 0.5, label: "x – nach rechts"}));
@@ -96,7 +92,7 @@ display(Plot.plot({
 **Merke:**
 Der Punkt ist jetzt bei **(${String(gx).replace(".", ",")} | ${String(gy).replace(".", ",")})**.
 Erste Zahl ist immer x. Zweite Zahl ist immer y.
-Check: Kannst du sagen „Ich gehe zuerst x nach rechts, dann y nach oben"?
+Bei positiven Zahlen gehst du zuerst x nach rechts und dann y nach oben.
 
 </div>
 
@@ -144,7 +140,7 @@ m = 2 ist der Preis pro Kilometer. b = 1 ist die Grundgebühr beim Einsteigen (x
 
 ---
 
-## 3. Die Wertetabelle – so rechnest du Punkte aus
+## 3. Die Wertetabelle
 
 Eine Wertetabelle ist eine **Rechen-Hilfe**.
 Du setzt oben x ein. Du rechnest y aus.
@@ -160,9 +156,9 @@ Rechne: y = 2 · 1 + 1 = 2 + 1 = 3. Punkt: (1 | 3).
 Schritt 3: Nimm x = -1.
 Rechne: y = 2 · (-1) + 1 = -2 + 1 = -1. Punkt: (-1 | -1).
 
-So geht es immer: **einsetzen – mal rechnen – plus rechnen – fertig.**
+Setze zuerst ein. Rechne dann mal und zum Schluss plus.
 
-✏️ **Du bist dran:** Halt die Lösung zu. Rechne x = 2 im Kopf: y = 2 · 2 + 1 = ? Rate zuerst, dann check unten mit der Tabelle.
+Rechne x = 2 im Kopf: y = 2 · 2 + 1 = ? Prüfe dein Ergebnis danach mit der Tabelle.
 
 🩺 **Mini-Check:**
 
@@ -244,11 +240,11 @@ ${g_tab_reflect === "m macht steil/flach, b schiebt hoch/runter" ? "✅ **Genau.
 
 ---
 
-## 4. Die Steigung m – in Ruhe
+## 4. Die Steigung m
 
-Hier geht es nur um m. b bleibt 0. Nimm dir Zeit.
+Hier geht es um m. b bleibt 0.
 
-### 4a. Was fühlt sich die Steigung an?
+### 4a. Was bedeutet die Steigung?
 
 Stell dir einen **Bergweg** vor:
 
@@ -308,7 +304,7 @@ const g4a_q1 = view(Inputs.radio(["m = 3", "m = 0,5", "m = -3"], {label: "Welche
 
 ${g4a_q1 === "m = 3" ? "✅ **Richtig.** Groß + plus = steil hoch." : g4a_q1 === "m = 0,5" ? "❌ Das ist **flach** hoch. Groß heißt steil (z.B. 3)." : g4a_q1 ? "❌ Minus heißt **runter**. Gesucht ist hoch + steil = m = 3." : "⬜ Wähle eine Antwort."}
 
-### 4b. Das Steigungsdreieck – so liest du m am Bild ab
+### 4b. Das Steigungsdreieck
 
 So merkst du dir m:
 
@@ -399,7 +395,7 @@ Unten steht, wie weit es nach rechts geht.
 
 </div>
 
-👀 **Ich zeige – Beispiel ganz langsam:**
+Beispiel:
 Punkt A = (1 | 1). Punkt B = (3 | 5).
 
 1. y-Unterschied: 5 – 1 = 4.
@@ -473,7 +469,7 @@ Wenn unten 0 rauskommt, ist die Linie **senkrecht**. Durch 0 teilen geht nicht. 
 
 ---
 
-## 5. Der Startwert b – wo startet die Linie?
+## 5. Der Startwert b
 
 **b** geht so:
 
@@ -533,7 +529,7 @@ ${g5_q1 === "b = 3" ? "✅ **Richtig.** b ist der y-Wert bei x=0." : g5_q1 === "
 
 ---
 
-## 6. Alles zusammen – deine 3 Schritte
+## 6. Eine Gerade zeichnen
 
 So zeichnest du **jede** Gerade:
 
@@ -595,7 +591,7 @@ ${g_odd === "y = 2·x + 1 und y = 2·x + 3" ? "✅ **Genau.** Gleiches m = paral
 
 ---
 
-## 7. Nullstelle – wo trifft die Gerade die x-Achse?
+## 7. Die Nullstelle
 
 **Nullstelle** heißt: **y = 0**. Du suchst den Punkt auf der waagerechten x-Achse.
 
@@ -620,9 +616,9 @@ Das brauchst du gleich wieder bei den Parabeln. Dort heißt es auch: y = 0 setze
 
 ---
 
-## Exit-Ticket – darfst du weiter?
+## Fragen zum Schluss
 
-Erst weiter zu Parabeln, wenn 2 von 3 stimmen. Sonst oben noch einmal schauen.
+Beantworte die drei Fragen. Wenn du weniger als zwei richtig hast, schaue dir die passenden Stellen noch einmal an.
 
 ```js
 const g6_q1 = view(Inputs.radio(["steigt, mittel", "fällt, steil", "flach"], {label: "1) m = 1. Was gilt?"}));

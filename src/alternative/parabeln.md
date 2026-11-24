@@ -3,7 +3,7 @@ title: Parabeln verstehen
 toc: true
 ---
 
-# Parabeln – Schritt für Schritt
+# Parabeln Schritt für Schritt
 
 Eine Parabel sieht aus wie ein **U**.
 So fliegt ein Ball: hoch und wieder runter. So spritzt Wasser aus dem Schlauch. So sieht ein Brückenbogen aus.
@@ -13,12 +13,12 @@ Das kannst du schon von den Geraden.
 
 <div class="card" style="border-left: 6px solid #7c3aed;">
 
-**So arbeitest du hier – wie bei Geraden:**
+**So kannst du hier lernen:**
 
-1. 🔁 **Abrufen** – Geraden-Wissen + Minus-Rechnen.
-2. 👀 **Ich zeige** – 1 fertiges Beispiel.
-3. 🔮 **Denke – Rate – Prüfe** – erst Vermutung, dann Regler.
-4. 🩺 **Mini-Check** – jede Antwort erklärt dir, wo der Denkfehler liegt.
+1. Wiederhole, was du über Geraden und das Rechnen mit Minus weißt.
+2. Schau dir ein Beispiel an.
+3. Überlege zuerst. Prüfe dann mit den Reglern.
+4. Beantworte die Fragen und lies die Rückmeldung.
 
 **Deine Ziele:** Danach rechnest du eine Tabelle, findest den **Scheitel** und prüfst die **Nullstellen** mit **D** und **abc-Formel**.
 
@@ -30,7 +30,7 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 ---
 
-## 0. Abrufen – das musst du können
+## 0. Wiederholung
 
 ```js
 const p0_q1 = view(Inputs.radio(["m = Steigung, b = Start auf y-Achse", "m = Start, b = Steigung", "weiß nicht mehr"], {label: "1) Gerade y = m·x + b. Was war m und b?"}));
@@ -44,7 +44,7 @@ const p0_q2 = view(Inputs.radio(["1", "-1", "-2"], {label: "2) Was ist (-1)²?"}
 
 ${p0_q2 === "1" ? "✅ **Richtig.** (-1)·(-1) = 1. **Minus mal minus = plus.** Das brauchst du bei jeder Parabel-Rechnung." : p0_q2 ? "❌ **Klassiker:** (-1)² = (-1)·(-1) = **1**, nicht -1. Minus mal minus gibt plus." : "⬜ Wähle eine Antwort."}
 
-Wenn beide stimmen, gehe weiter. Sonst wiederhole zuerst Geraden und Minus-Rechnen. Das spart dir später Zeit.
+Wenn du beide Fragen richtig beantwortet hast, gehe weiter. Sonst wiederhole zuerst Geraden und das Rechnen mit Minus.
 
 ---
 
@@ -55,7 +55,7 @@ Wenn beide stimmen, gehe weiter. Sonst wiederhole zuerst Geraden und Minus-Rechn
 
 Das x² macht die Biegung.
 
-Schaue nur. Links siehst du gerade, rechts gebogen. Bewege noch nichts. Nur schauen:
+Die blaue Linie ist eine Gerade. Die rote Linie ist eine Parabel:
 
 ```js
 {
@@ -115,7 +115,7 @@ Wie bei Geraden:
 - x = 2 → y = 2² = 4 → Punkt (2 | 4)
 - x = -2 → y = (-2)² = 4 → Punkt (-2 | 4)
 
-Siehst du? Links und rechts kommt **das Gleiche** raus. Das heißt **symmetrisch** oder **spiegelgleich**: links und rechts sind gleich. Darum wird es ein U.
+Links und rechts kommt **das Gleiche** heraus. Das heißt **symmetrisch** oder **spiegelgleich**: Beide Seiten passen wie bei einem Spiegel zusammen. Darum entsteht ein U.
 
 ✏️ **Du bist dran (1 Lücke):** x = 3 → y = 3² = ? Denke zuerst, dann prüfe mit der Tabelle unten.
 
@@ -436,7 +436,7 @@ ${p4a_q1 === "S(-3 | 1)" ? "✅ **Richtig.** x+3 = x–(-3), also d=-3 = 3 nach 
 Manchmal hast du **y = a · x² + b · x + c** (Normalform).
 Du willst den Scheitel wissen, ohne zu zeichnen.
 
-Dafür gibt es eine **Formel** – 2 Schritte:
+Dafür gibt es eine **Formel**. Du rechnest in zwei Schritten:
 
 <div class="card" style="border-left: 6px solid #2563eb;">
 
@@ -449,7 +449,7 @@ Scheitel ist **S(xs | ys)**.
 
 </div>
 
-👀 **Ich zeige – Beispiel ganz langsam:** y = 1 · x² – 4 · x + 3. Also a = 1, b = -4, c = 3.
+Beispiel: y = 1 · x² – 4 · x + 3. Also a = 1, b = -4, c = 3.
 
 1. xs = –(-4) : (2·1) = 4 : 2 = 2.
 2. ys = 1·2² + (-4)·2 + 3 = 4 – 8 + 3 = -1.
@@ -567,7 +567,7 @@ const pn0_c = view(Inputs.range([-3, 4], {value: -1, step: 1, label: "c – bewe
 }
 ```
 
-### 5a. Die Diskriminante D – sie sagt dir, wie viele Nullstellen es gibt
+### 5a. Wie viele Nullstellen gibt es?
 
 Kein Bild nötig.
 Du rechnest **D** aus. D heißt **Diskriminante**.
@@ -584,7 +584,7 @@ Du rechnest **D** aus. D heißt **Diskriminante**.
 
 </div>
 
-👀 **Ich zeige – Beispiel ganz langsam:** y = 1·x² – 4·x + 3. Also a=1, b=-4, c=3.
+Beispiel: y = 1·x² – 4·x + 3. Also a=1, b=-4, c=3.
 
 1. b² = (-4)² = 16.
 2. 4·a·c = 4·1·3 = 12.
@@ -673,7 +673,7 @@ Nur wenn D **minus** ist, geht es nicht. Man kann aus minus keine Wurzel ziehen.
 
 </div>
 
-👀 **Ich zeige – Beispiel ganz langsam:** y = 1·x² – 4·x + 3. Wir wissen schon D = 4.
+Beispiel: y = 1·x² – 4·x + 3. Wir wissen schon D = 4.
 
 1. –b = –(-4) = 4.
 2. √D = √4 = 2.
@@ -682,7 +682,7 @@ Nur wenn D **minus** ist, geht es nicht. Man kann aus minus keine Wurzel ziehen.
 5. x2 = (4 + 2) : 2 = 6 : 2 = 3.
 6. Nullstellen: **(1 | 0)** und **(3 | 0)**.
 
-Probe: Setze x=1 ein: 1 – 4 + 3 = 0. Stimmt. So checkst du dich selbst.
+Probe: Setze x=1 ein: 1 – 4 + 3 = 0. So prüfst du dein Ergebnis.
 
 Die blauen Punkte im Bild oben sind x<sub>1</sub> und x<sub>2</sub>. **Mit deinen Regler-Werten:**
 
@@ -696,7 +696,7 @@ Wenn D minus ist, gibt es **keine** Nullstellen. Dann bleiben x<sub>1</sub> und 
 
 <div class="card" style="border-left: 6px solid #f59e0b;">
 
-**Dein Kochrezept für jede Parabel-Aufgabe (immer gleiche Reihenfolge):**
+**So gehst du bei einer Parabel-Aufgabe vor:**
 
 1. Schreibe a, b, c auf.
 2. Rechne **D = b² – 4·a·c**.
@@ -711,7 +711,7 @@ Wenn D minus ist, gibt es **keine** Nullstellen. Dann bleiben x<sub>1</sub> und 
 
 ---
 
-## 6. Normalform und Scheitelpunktform – wann nehme ich was?
+## 6. Normalform und Scheitelpunktform
 
 - **Normalform y = a·x² + b·x + c** → gut für **D und abc-Formel**. Du liest a, b, c sofort ab.
 - **Scheitelpunktform y = a·(x–d)² + e** → gut für **Scheitel S(d|e)**. Du siehst sofort, wo das Tal / der Gipfel ist.
@@ -721,7 +721,7 @@ Du kannst umwandeln:
 - **Scheitel → normal:** Klammer ausmultiplizieren. Das ist unser Beispiel von oben: y = 1·(x–2)² + (-1) = x² –4x +4 –1 = x² –4x +3.
 - **Normal → Scheitel:** Nimm die **Scheitel-Formel** von oben (xs, ys). Dann schreibe y = a·(x–xs)² + ys. Beispiel: Aus y = x² –4x +3 mit S(2 | -1) wird y = 1·(x–2)² + (-1).
 
-Ein Satz reicht: **Beide Formen beschreiben die gleiche Parabel.**
+**Beide Formen beschreiben die gleiche Parabel.**
 
 Zum Schluss: Stelle hier alles ein und schaue, wie Scheitel, D und Nullstellen zusammenhängen:
 
@@ -785,7 +785,7 @@ ${p_odd === "y = (x+2)² – 1" ? "✅ **Genau.** (x+2) heißt d=-2, also S(-2 |
 
 ---
 
-## Exit-Ticket – darfst du fertig sagen?
+## Fragen zum Schluss
 
 ```js
 const p6_q1 = view(Inputs.radio(["(-2)² = 4", "(-2)² = -4"], {label: "1) Was ist (-2)²?"}));
@@ -826,6 +826,6 @@ Wenn 3 von 4 stimmen: fertig. Sonst oben beim Mini-Check noch einmal schauen.
 - Du rechnest **D = b² – 4·a·c** und sagst: plus = 2, null = 1, minus = 0 Nullstellen.
 - Du rechnest Nullstellen mit **x = (–b ± √D) : (2·a)** und machst die Probe.
 
-Gehe zurück zu [Start](./) oder übe noch einmal [Geraden](./geraden). Mache das Exit-Ticket morgen noch einmal. Dann bleibt es im Kopf.
+Gehe zurück zu [Start](../) oder übe noch einmal [Geraden](./geraden). Du kannst die Fragen morgen noch einmal beantworten.
 
 </div>
