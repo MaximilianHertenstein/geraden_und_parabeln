@@ -9,6 +9,7 @@ Wir suchen die Punkte, an denen eine Gerade die x-Achse und die y-Achse trifft. 
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
@@ -58,12 +59,11 @@ Der orange Punkt liegt auf der y-Achse. Gibt es einen Schnittpunkt mit der x-Ach
 ```js
 {
   const linie = [{x: -8, y: am * -8 + ab}, {x: 8, y: am * 8 + ab}];
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width, aspectRatio: 1, margin: 40,
     x: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "x →"},
     y: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "↑ y"},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}), Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3, clip: true}),
       Plot.dot([{x: 0, y: ab}], {x: "x", y: "y", r: 7, fill: "#f59e0b"}),
       Plot.dot(aX === null ? [] : [{x: aX, y: 0}], {x: "x", y: "y", r: 6, fill: "#16a34a"})

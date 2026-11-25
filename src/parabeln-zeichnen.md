@@ -9,6 +9,7 @@ Du erstellst eine Wertetabelle und zeichnest damit eine Parabel. Dann berechnest
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 Wir verwenden die Gleichung **y = a · x · x + b · x + c**. Im ersten Teil rechnen wir x mal x. Dafür schreiben wir auch **x²**. Für eine Parabel darf a nicht null sein.
@@ -81,15 +82,13 @@ In jeder Spalte stehen die beiden Zahlen für einen Punkt. Die erste Spalte ergi
 ```js
 {
   const punkte = pXWerte.map((x) => ({x, y: pWert(x)}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     margin: 40,
     x: {domain: [-8, 8], label: "x →", grid: true, ticks: d3.range(-8, 9)},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: d3.range(-8, 9)},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.dot(punkte, {x: "x", y: "y", r: 6, fill: "#f59e0b", stroke: "black"}),
       Plot.text(punkte, {x: "x", y: "y", text: (punkt) => `(${pFmt(punkt.x)} | ${pFmt(punkt.y)})`, dy: -14, fontSize: 12})
     ]
@@ -105,15 +104,13 @@ Verbinde die Punkte zu einer **glatten Kurve**. Zeichne keine geraden Strecken z
 {
   const punkte = pXWerte.map((x) => ({x, y: pWert(x)}));
   const kurve = d3.range(-3, 3.01, 0.02).map((x) => ({x, y: pWert(x)}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     margin: 40,
     x: {domain: [-8, 8], label: "x →", grid: true, ticks: d3.range(-8, 9)},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: d3.range(-8, 9)},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(kurve, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3, clip: true}),
       Plot.dot(punkte, {x: "x", y: "y", r: 6, fill: "#f59e0b", stroke: "black"})
     ]

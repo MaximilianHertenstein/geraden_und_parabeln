@@ -9,6 +9,7 @@ Am Schnittpunkt haben beide Geraden denselben x-Wert und denselben y-Wert. Du ka
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
@@ -44,12 +45,11 @@ Die blaue Gerade ist f, die rote Gerade ist g. Der orange Punkt zeigt den Schnit
   const f = [{x: -8, y: sm1 * -8 + sb1}, {x: 8, y: sm1 * 8 + sb1}];
   const g = [{x: -8, y: sm2 * -8 + sb2}, {x: 8, y: sm2 * 8 + sb2}];
   const schnitt = sX !== null && Math.abs(sX) <= 8 && Math.abs(sY) <= 8 ? [{x: sX, y: sY}] : [];
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width, aspectRatio: 1, margin: 40,
     x: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "x →"},
     y: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "↑ y"},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}), Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(f, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 4, clip: true}),
       Plot.line(g, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 2, strokeDasharray: "6,3", clip: true}),
       Plot.dot(schnitt, {x: "x", y: "y", r: 7, fill: "#f59e0b", stroke: "black"})

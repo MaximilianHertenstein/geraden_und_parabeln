@@ -13,6 +13,7 @@ Hier lernst du **drei Dinge**:
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 Wir benutzen auf der ganzen Seite dieselbe Gerade. Stelle **m** und **b** mit den Reglern ein. Die Rechnungen, die Tabelle und die Zeichnungen ändern sich mit.
@@ -105,14 +106,12 @@ Jede **Spalte** der Tabelle ist ein Punkt: oben steht x, darunter das passende y
 ```js
 {
   const punkte = [-2, -1, 0, 1, 2].map((x) => ({x: x, y: wm * x + wb}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.dot(punkte, {x: "x", y: "y", r: 7, fill: "#f59e0b", stroke: "black"}),
       Plot.text(punkte, {x: "x", y: "y", text: (d) => `(${d.x} | ${d.y})`, dy: -14, fontSize: 12})
     ]
@@ -130,14 +129,12 @@ Legst du ein Lineal an die Punkte, siehst du: Sie liegen genau auf einer Linie. 
 {
   const punkte = [-2, -1, 0, 1, 2].map((x) => ({x: x, y: wm * x + wb}));
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x: x, y: wm * x + wb}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot(punkte, {x: "x", y: "y", r: 7, fill: "#f59e0b", stroke: "black"})
     ]
@@ -232,14 +229,12 @@ In der Zeichnung siehst du **zwei Steigungsdreiecke** an verschiedenen Stellen d
 
   const richtung = wm >= 0 ? "oben" : "unten";
 
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
 
       // Dreieck 1
@@ -322,14 +317,12 @@ Bewege jetzt nur den **b**-Regler. Die Gerade verschiebt sich nach oben oder unt
 ```js
 {
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: wm * x + wb}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot([{x: 0, y: wb}], {x: "x", y: "y", r: 9, fill: "#f59e0b", stroke: "black"}),
       Plot.text([{x: 0, y: wb, t: `(0 | ${String(wb).replace(".", ",")})`}], {x: "x", y: "y", text: "t", dx: 30, dy: -10, fontSize: 13, fontWeight: "bold"})
@@ -390,14 +383,12 @@ Nimm einen Punkt auf der Geraden. Gehe von dort 1 nach rechts. Gehe dann nach ob
 
   const richtung = gm >= 0 ? "oben" : "unten";
 
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
 
       Plot.line([a1, a2], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),

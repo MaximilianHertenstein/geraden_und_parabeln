@@ -9,6 +9,7 @@ Mit der Punktprobe prüfst du, ob ein Punkt auf einer Geraden liegt. Du kannst a
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
@@ -54,12 +55,11 @@ Der orange Punkt ist P. Der grüne Punkt liegt bei demselben x-Wert auf der blau
 ```js
 {
   const linie = [{x: -10, y: pm * -10 + pb}, {x: 10, y: pm * 10 + pb}];
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width, aspectRatio: 1, margin: 40,
     x: {domain: [-10, 10], grid: true, ticks: d3.range(-10, 11), label: "x →"},
     y: {domain: [-10, 10], grid: true, ticks: d3.range(-10, 11), label: "↑ y"},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}), Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3, clip: true}),
       Plot.dot([{x: px, y: pGerade}], {x: "x", y: "y", r: 9, fill: "#16a34a"}),
       Plot.dot([{x: px, y: py}], {x: "x", y: "y", r: 5, fill: "#f59e0b", stroke: "black"})

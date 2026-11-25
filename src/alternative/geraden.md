@@ -24,6 +24,7 @@ Zuerst geht es um das Koordinatensystem. Danach lernst du die Wertetabelle, die 
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "../koordinatensystem.js";
 ```
 
 ---
@@ -73,14 +74,12 @@ const gy = view(Inputs.range([-5, 5], {value: 2, step: 0.5, label: "y – nach o
 ```
 
 ```js
-display(Plot.plot({
+display(koordinatensystem(Plot, {
   width,
   aspectRatio: 1,
   x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
   y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
   marks: [
-    Plot.ruleX([0], {strokeWidth: 2}),
-    Plot.ruleY([0], {strokeWidth: 2}),
     Plot.dot([{x: gx, y: gy}], {x: "x", y: "y", r: 9, fill: "#2563eb"}),
     Plot.text([{x: gx, y: gy, t: `(${String(gx).replace(".", ",")} | ${String(gy).replace(".", ",")})`}], {x: "x", y: "y", text: "t", dy: -20, fontSize: 17, fontWeight: "bold"})
   ]
@@ -189,14 +188,12 @@ const gb_tab = view(Inputs.range([-3, 3], {value: 1, step: 1, label: "b – Star
 {
   const punkte = [-2, -1, 0, 1, 2].map((x) => ({x: x, y: gm_tab * x + gb_tab}));
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x: x, y: gm_tab * x + gb_tab}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot(punkte, {x: "x", y: "y", r: 6, fill: "#f59e0b", stroke: "black"})
     ]
@@ -271,15 +268,13 @@ const gm_gef = view(Inputs.range([-3, 3], {value: 1, step: 0.5, label: "m – St
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: gm_gef * x}));
   let wort = gm_gef > 0 ? "es geht HOCH ↗" : gm_gef < 0 ? "es geht RUNTER ↘" : "es ist FLACH →";
   let stark = Math.abs(gm_gef) >= 2 ? "steil" : Math.abs(gm_gef) >= 1 ? "mittel" : Math.abs(gm_gef) > 0 ? "flach" : "ganz flach";
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: `m = ${gm_gef} → ${wort}, ${stark}`,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 4})
     ]
   }));
@@ -327,14 +322,12 @@ const gm_drei = view(Inputs.range([-3, 3], {value: 2, step: 0.5, label: "m – S
   const p0 = {x: 0, y: 0};
   const p1 = {x: 1, y: 0};
   const p2 = {x: 1, y: gm_drei};
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.line([p0, p1], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
       Plot.line([p1, p2], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),
@@ -438,15 +431,13 @@ const gby = view(Inputs.range([-5, 5], {value: 5, step: 1, label: "By"}));
     if (dx === 0) return {x: gax, y: x};
     return {x, y: gay + (dy/dx)*(x - gax)};
   });
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: `y-Unterschied = ${dy}, x-Unterschied = ${dx}, m = ${m}`,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot([{x: gax, y: gay}, {x: gbx, y: gby}], {x: "x", y: "y", r: 7, fill: "#f59e0b", stroke: "black"}),
       Plot.text([{x: gax, y: gay, t: `A(${gax}|${gay})`}], {x: "x", y: "y", text: "t", dy: -16, fontSize: 14, fontWeight: "bold"}),
@@ -495,14 +486,12 @@ const gb_b = view(Inputs.range([-4, 4], {value: 2, step: 1, label: "b – Startw
 ```js
 {
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: gm_b * x + gb_b}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot([{x: 0, y: gb_b}], {x: "x", y: "y", r: 8, fill: "#16a34a", stroke: "black"}),
       Plot.text([{x: 0, y: gb_b, t: `b = ${gb_b} → (0|${gb_b})`}], {x: "x", y: "y", text: "t", dx: 55, fontSize: 14, fontWeight: "bold"})
@@ -552,14 +541,12 @@ const gb_end = view(Inputs.range([-4, 4], {value: 0, step: 1, label: "b"}));
   const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: gm_end * x + gb_end}));
   const p0 = {x: 0, y: gb_end};
   const p1 = {x: 1, y: gm_end + gb_end};
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.dot([p0, p1], {x: "x", y: "y", r: 6, fill: "#f59e0b", stroke: "black"}),
       Plot.text([{x: 0, y: gb_end, t: `Start (0|${gb_end})`}], {x: "x", y: "y", text: "t", dx: 45, fontSize: 13})

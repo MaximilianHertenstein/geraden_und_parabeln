@@ -11,6 +11,7 @@ Teile die Änderung in y-Richtung durch die Änderung in x-Richtung. So erhälts
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
@@ -34,12 +35,11 @@ Starte beim Punkt **P(0 | ${bb})**. Gehe **${dx} nach rechts**. Gehe dann ${dy =
   const q = {x: dx, y: bb + dy};
   const m = dy / dx;
   const linie = [{x: -8, y: -8 * m + bb}, {x: 8, y: 8 * m + bb}];
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width, aspectRatio: 1, margin: 40,
     x: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "x →"},
     y: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "↑ y"},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}), Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3, clip: true}),
       Plot.line([p, ecke], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
       Plot.line([ecke, q], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),

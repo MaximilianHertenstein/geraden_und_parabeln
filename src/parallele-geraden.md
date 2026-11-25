@@ -9,6 +9,7 @@ Wir vergleichen zwei Geraden. Stelle ihre Steigungen und y-Achsenabschnitte ein.
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
@@ -59,12 +60,11 @@ ${fm === gm ? (fb === gb ? "Beide Geraden haben dieselbe Steigung und denselben 
 {
   const f = [{x: -8, y: fm * -8 + fb}, {x: 8, y: fm * 8 + fb}];
   const g = [{x: -8, y: gm * -8 + gb}, {x: 8, y: gm * 8 + gb}];
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width, aspectRatio: 1, margin: 40,
     x: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "x →"},
     y: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "↑ y"},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}), Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(f, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 4, clip: true}),
       Plot.line(g, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 2, strokeDasharray: "6,3", clip: true})
     ]

@@ -26,6 +26,7 @@ Das kannst du schon von den Geraden.
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
+import {koordinatensystem} from "../koordinatensystem.js";
 ```
 
 ---
@@ -61,14 +62,12 @@ Die blaue Linie ist eine Gerade. Die rote Linie ist eine Parabel:
 {
   const gerade = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: x + 1}));
   const parabel = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: x*x - 2}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 2.2,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-4, 6], label: "↑ y", grid: true},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(gerade, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
       Plot.line(parabel, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.text([{x: -4, y: -1, t: "Gerade"}], {x: "x", y: "y", text: "t", fill: "#2563eb", fontSize: 15, fontWeight: "bold"}),
@@ -155,14 +154,12 @@ const pa_tab = view(Inputs.range([-2, 2], {value: 1, step: 0.5, label: "a – vo
 {
   const punkte = [-2, -1, 0, 1, 2].map((x) => ({x, y: pa_tab*x*x}));
   const linie = d3.range(-4, 4.05, 0.05).map((x) => ({x, y: pa_tab*x*x}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-5, 5], label: "x →", grid: true, ticks: 11},
     y: {domain: [-2, 8], label: "↑ y", grid: true, ticks: 11},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.dot(punkte, {x: "x", y: "y", r: 6, fill: "#f59e0b", stroke: "black"})
     ]
@@ -217,15 +214,13 @@ const pa_a = view(Inputs.range([-3, 3], {value: 1, step: 0.5, label: "a"}));
   const linie = d3.range(-5, 5.05, 0.05).map((x) => ({x, y: pa_a*x*x}));
   let deutung = pa_a > 0 ? "U nach OBEN (lachender Mund)" : pa_a < 0 ? "U nach UNTEN (trauriger Mund)" : "kein U mehr, flache Linie";
   let weite = Math.abs(pa_a) > 1 ? "eng / schmal" : Math.abs(pa_a) === 1 ? "normal" : Math.abs(pa_a) > 0 ? "weit / breit" : "-";
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: `a = ${pa_a} → ${deutung}, ${weite}`,
     x: {domain: [-5, 5], label: "x →", grid: true, ticks: 11},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.line([{x: 0, y: 0}, {x: 1, y: 0}], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
       Plot.line([{x: 1, y: 0}, {x: 1, y: pa_a}], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),
@@ -310,14 +305,12 @@ const pa_c = view(Inputs.range([-4, 4], {value: 0, step: 1, label: "c – hoch /
 ```js
 {
   const linie = d3.range(-5, 5.05, 0.05).map((x) => ({x, y: pa_c_a*x*x + pa_c}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-5, 5], label: "x →", grid: true, ticks: 11},
     y: {domain: [-5, 5], label: "↑ y", grid: true, ticks: 11},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.dot([{x: 0, y: pa_c}], {x: "x", y: "y", r: 8, fill: "#16a34a", stroke: "black"}),
       Plot.text([{x: 0, y: pa_c, t: `c = ${pa_c} → (0|${pa_c})`}], {x: "x", y: "y", text: "t", dx: 55, fontSize: 14, fontWeight: "bold"})
@@ -394,14 +387,12 @@ const ps_a = view(Inputs.range([-2, 2], {value: 1, step: 0.5, label: "a – oben
 ```js
 {
   const linie = d3.range(-7, 7.05, 0.05).map((x) => ({x, y: ps_a*(x - ps_d)*(x - ps_d) + ps_e}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-5, 5], label: "↑ y", grid: true, ticks: 11},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.line([{x: ps_d, y: ps_e}, {x: ps_d + 1, y: ps_e}], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
       Plot.line([{x: ps_d + 1, y: ps_e}, {x: ps_d + 1, y: ps_e + ps_a}], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),
@@ -484,15 +475,13 @@ const pn_c = view(Inputs.range([-5, 5], {value: 3, step: 1, label: "c"}));
   const xs = pn_a === 0 ? NaN : -pn_b / (2*pn_a);
   const ys = pn_a === 0 ? NaN : pn_a*xs*xs + pn_b*xs + pn_c;
   const linie = d3.range(-7, 7.05, 0.05).map((x) => ({x, y: pn_a*x*x + pn_b*x + pn_c}));
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: pn_a === 0 ? "a = 0 → keine Parabel (Gerade!)" : `Scheitel S(${xs.toFixed(2)} | ${ys.toFixed(2)})`,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       pn_a === 0 ? Plot.dot([], {x: "x", y: "y"}) : Plot.dot([{x: xs, y: ys}], {x: "x", y: "y", r: 9, fill: "#16a34a", stroke: "black"})
     ]
@@ -551,15 +540,13 @@ const pn0_c = view(Inputs.range([-3, 4], {value: -1, step: 1, label: "c – bewe
     pts = [{x: 0, y: 0}];
   }
   let text = pn0_c < 0 ? "2 Nullstellen" : pn0_c === 0 ? "1 Nullstelle (berührt)" : "keine Nullstelle";
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: `y = x² ${pn0_c >= 0 ? "+" : "−"} ${Math.abs(pn0_c)} → ${text}`,
     x: {domain: [-5, 5], label: "x →", grid: true, ticks: 11},
     y: {domain: [-5, 5], label: "↑ y", grid: true, ticks: 11},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.dot(pts, {x: "x", y: "y", r: 8, fill: "#2563eb", stroke: "black"})
     ]
@@ -616,15 +603,13 @@ const pd_c = view(Inputs.range([-5, 5], {value: 3, step: 1, label: "c"}));
     const x2 = (-pd_b + Math.sqrt(Math.max(0,D))) / (2*pd_a);
     pts = D === 0 ? [{x: x1, y: 0}] : [{x: x1, y: 0}, {x: x2, y: 0}];
   }
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: `D = ${D} → ${anzahl}`,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       Plot.dot(pts, {x: "x", y: "y", r: 8, fill: "#2563eb", stroke: "black"})
     ]
@@ -746,15 +731,13 @@ const pf_e = view(Inputs.range([-3, 3], {value: -2, step: 1, label: "e (Scheitel
   const fmt = (n) => String(n.toFixed(1)).replace(".", ",");
   const gleichung = `y = ${String(a).replace(".", ",")}·x² ${b >= 0 ? "+" : "−"} ${fmt(Math.abs(b))}·x ${c >= 0 ? "+" : "−"} ${fmt(Math.abs(c))}`;
   const titel = a === 0 ? `${gleichung} → keine Parabel, sondern Gerade` : `${gleichung}, D=${fmt(D)}, S(${pf_d}|${pf_e})`;
-  display(Plot.plot({
+  display(koordinatensystem(Plot, {
     width,
     aspectRatio: 1,
     title: titel,
     x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
     y: {domain: [-6, 6], label: "↑ y", grid: true, ticks: 13},
     marks: [
-      Plot.ruleX([0], {strokeWidth: 2}),
-      Plot.ruleY([0], {strokeWidth: 2}),
       Plot.line(linie, {x: "x", y: "y", stroke: "#dc2626", strokeWidth: 3}),
       pf_a === 0 ? Plot.dot([], {x: "x", y: "y"}) : Plot.dot([{x: pf_d, y: pf_e}], {x: "x", y: "y", r: 8, fill: "#16a34a", stroke: "black"})
     ]

@@ -20,6 +20,7 @@ export default {
     {
       name: "Alternative",
       pages: [
+        {name: "Lernübersicht", path: "/alternative/ueberblick"},
         {name: "Geraden", path: "/alternative/geraden"},
         {name: "Parabeln", path: "/alternative/parabeln"}
       ]
