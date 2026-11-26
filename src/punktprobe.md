@@ -13,22 +13,6 @@ import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
 ```js
-const pm = view(Inputs.range([-2, 2], {value: 2, step: 0.5, label: "m – Steigung"}));
-```
-
-```js
-const pb = view(Inputs.range([-3, 3], {value: -1, step: 1, label: "b – y-Achsenabschnitt"}));
-```
-
-```js
-const px = view(Inputs.range([-3, 3], {value: 1, step: 1, label: "x-Koordinate von P"}));
-```
-
-```js
-const py = view(Inputs.range([-6, 6], {value: 2, step: 0.5, label: "y-Koordinate von P"}));
-```
-
-```js
 const pFmt = (zahl) => String(zahl).replace(".", ",");
 const pZeichen = pb < 0 ? "−" : "+";
 const pGerade = pm * px + pb;
@@ -44,7 +28,9 @@ Setze den x-Wert von P in die Geradengleichung ein. So berechnest du den y-Wert 
 
 ## 2. Die y-Werte vergleichen
 
-Die Gerade hat bei x = ${pFmt(px)} den y-Wert **${pFmt(pGerade)}**. Die y-Koordinate von P ist **${pFmt(py)}**.
+Der y-Wert von P ist **${pFmt(py)}**. Der y-Wert der Geraden an dieser Stelle ist **${pFmt(pGerade)}**.
+
+**${pFmt(py)} ${py === pGerade ? "=" : py > pGerade ? ">" : "<"} ${pFmt(pGerade)}**
 
 ${py === pGerade ? `Die Werte sind gleich. P liegt auf der Geraden.` : py > pGerade ? `Die y-Koordinate von P ist größer. P liegt oberhalb der Geraden.` : `Die y-Koordinate von P ist kleiner. P liegt unterhalb der Geraden.`}
 
@@ -66,4 +52,24 @@ Der orange Punkt ist P. Der grüne Punkt liegt bei demselben x-Wert auf der blau
     ]
   }));
 }
+```
+
+## Das Beispiel verändern
+
+Mit den Reglern kannst du die Gerade und den Punkt verändern. Die Rechnung und die Zeichnung ändern sich mit.
+
+```js
+const pm = view(Inputs.range([-2, 2], {value: 2, step: 0.5, label: "m – Steigung"}));
+```
+
+```js
+const pb = view(Inputs.range([-3, 3], {value: -1, step: 1, label: "b – y-Achsenabschnitt"}));
+```
+
+```js
+const px = view(Inputs.range([-3, 3], {value: 1, step: 1, label: "x-Koordinate von P"}));
+```
+
+```js
+const py = view(Inputs.range([-6, 6], {value: 2, step: 0.5, label: "y-Koordinate von P"}));
 ```

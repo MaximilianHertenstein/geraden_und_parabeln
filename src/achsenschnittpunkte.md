@@ -1,11 +1,11 @@
 ---
-title: Achsenschnittpunkte von Geraden
+title: Schnittpunkt mit der y-Achse
 toc: true
 ---
 
-# Achsenschnittpunkte von Geraden
+# Schnittpunkt mit der y-Achse
 
-Wir suchen die Punkte, an denen eine Gerade die x-Achse und die y-Achse trifft. Verändere die Gerade mit den Reglern. Die Tabelle, die Rechnung und die Zeichnung ändern sich mit.
+Wir suchen den Punkt, an dem die Gerade die y-Achse trifft. Verändere die Gerade mit den Reglern.
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
@@ -23,7 +23,6 @@ const ab = view(Inputs.range([-4, 4], {value: -4, step: 1, label: "b – y-Achse
 ```js
 const aFmt = (zahl) => new Intl.NumberFormat("de-DE", {maximumFractionDigits: 3}).format(zahl);
 const aVorzeichen = ab < 0 ? "−" : "+";
-const aX = am === 0 ? null : -ab / am;
 ```
 
 Unsere Gerade: **y = ${aFmt(am)} · x ${aVorzeichen} ${aFmt(Math.abs(ab))}**
@@ -38,23 +37,15 @@ Unsere Gerade: **y = ${aFmt(am)} · x ${aVorzeichen} ${aFmt(Math.abs(ab))}**
 }
 ```
 
-## 1. Schnittpunkt mit der y-Achse
+Auf der y-Achse ist **x = 0**. In der Wertetabelle steht darunter **y = ${aFmt(ab)}**.
 
-Auf der y-Achse ist x = 0. Wir setzen x = 0 in die aktuelle Gleichung ein:
+Diesen y-Wert kannst du auch berechnen. Setze **x = 0** ein:
 
 **y = ${aFmt(am)} · 0 ${aVorzeichen} ${aFmt(Math.abs(ab))} = ${aFmt(ab)}**
 
-Der Schnittpunkt ist **Sᵧ(0 | ${aFmt(ab)})**. Du kannst den y-Wert auch direkt als b aus der Gleichung ablesen.
+Nimm **x = 0** und den berechneten Wert **y = ${aFmt(ab)}**. Zusammen ergeben sie den Schnittpunkt **Sᵧ(0 | ${aFmt(ab)})**.
 
-## 2. Schnittpunkt mit der x-Achse
-
-Auf der x-Achse ist y = 0. Setze y = 0 und löse die Gleichung nach x auf.
-
-${am !== 0 ? `0 = ${aFmt(am)} · x ${aVorzeichen} ${aFmt(Math.abs(ab))}  →  ${aFmt(am)} · x = ${aFmt(-ab)}  →  x = ${aFmt(-ab)} : ${aFmt(am)}${Number.isInteger(aX * 1000) ? " = " : " ≈ "}${aFmt(aX)}. Der Schnittpunkt ist Sₓ(${Number.isInteger(aX * 1000) ? "" : "≈ "}${aFmt(aX)} | 0).` : ab === 0 ? "Hier ist y = 0 für alle x. Die Gerade liegt auf der x-Achse; alle ihre Punkte sind Schnittpunkte." : "Hier ist die Gerade waagerecht und liegt nicht auf der x-Achse. Es gibt keinen Schnittpunkt mit der x-Achse."}
-
-## 3. Die Schnittpunkte in der Zeichnung
-
-Der orange Punkt liegt auf der y-Achse. Gibt es einen Schnittpunkt mit der x-Achse, ist er grün markiert.
+Der orange Punkt zeigt den Schnittpunkt mit der y-Achse.
 
 ```js
 {
@@ -65,9 +56,10 @@ Der orange Punkt liegt auf der y-Achse. Gibt es einen Schnittpunkt mit der x-Ach
     y: {domain: [-8, 8], grid: true, ticks: d3.range(-8, 9), label: "↑ y"},
     marks: [
       Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3, clip: true}),
-      Plot.dot([{x: 0, y: ab}], {x: "x", y: "y", r: 7, fill: "#f59e0b"}),
-      Plot.dot(aX === null ? [] : [{x: aX, y: 0}], {x: "x", y: "y", r: 6, fill: "#16a34a"})
+      Plot.dot([{x: 0, y: ab}], {x: "x", y: "y", r: 7, fill: "#f59e0b"})
     ]
   }));
 }
 ```
+
+Bei y = m · x + b kannst du den y-Achsenabschnitt b auch direkt ablesen. Weiter zum [Schnittpunkt mit der x-Achse](./achsenschnittpunkte-x).

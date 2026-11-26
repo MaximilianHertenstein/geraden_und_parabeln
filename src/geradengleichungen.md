@@ -11,7 +11,7 @@ import * as Inputs from "npm:@observablehq/inputs";
 import {koordinatensystem} from "./koordinatensystem.js";
 ```
 
-Eine Geradengleichung zeigt, wie du zu einem $x$-Wert den $y$-Wert ausrechnest.
+Eine Geradengleichung zeigt, wie du zu einem x-Wert den y-Wert ausrechnest.
 
 
 **y = ${String(wm).replace(".", ",")} · x ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")}**
@@ -40,7 +40,7 @@ Hier siehst du zwei Beispiele für unsere aktuelle Gerade:
 }
 ```
 
-Die berechneten Werte tragen wir in eine **Wertetabelle** ein. Oben steht der $x$-Wert, darunter der berechnete $y$-Wert. Die $x$-Werte sind entweder vorgegeben oder wir können sie uns selbst aussuchen.
+Die berechneten Werte tragen wir in eine **Wertetabelle** ein. Oben steht der x-Wert, darunter der berechnete y-Wert. Die x-Werte sind entweder vorgegeben oder wir können sie uns selbst aussuchen.
 
 
 ### Die fertige Wertetabelle
@@ -72,11 +72,11 @@ verwendet.
 
 
 
-Die Zahl, mit der $x$ malgenommen wird, heißt $m$. Hier ist **m = ${String(wm).replace(".", ",")}**.
-Die Zahl ohne $x$ heißt $b$. Hier ist **b = ${String(wb).replace(".", ",")}**.
+Die Zahl, mit der x malgenommen wird, heißt m. Hier ist **m = ${String(wm).replace(".", ",")}**.
+Die Zahl ohne x heißt b. Hier ist **b = ${String(wb).replace(".", ",")}**.
 
 
-Mit den Schiebereglern kannst du $m$ und $b$ verändern. Die Gleichung, die Rechnungen und die Tabelle ändern sich mit.
+Mit den Schiebereglern kannst du m und b verändern. Die Gleichung, die Rechnungen und die Tabelle ändern sich mit.
 
 ```js
 const wmInput = Inputs.range([-3, 3], {value: 2, step: 0.5, label: "m – Steigung"});
@@ -89,11 +89,22 @@ const wb = view(wbInput);
 ```
 
 
-Aufgabe: Ändere $m$ und $b$ und lies die Rechnungen noch einmal.
+Aufgabe: Ändere m und b und lies die Rechnungen noch einmal.
 
 ---
 
 ## 1. Die Punkte einzeichnen
+
+```js
+{
+  const xs = [-2, -1, 0, 1, 2];
+  const fmt = (zahl) => String(zahl).replace(".", ",");
+  display(html`<table aria-label="Wertetabelle der Geraden"><tbody>
+    <tr><th scope="row">x</th>${xs.map((x) => html`<td>${fmt(x)}</td>`)}</tr>
+    <tr><th scope="row">y</th>${xs.map((x) => html`<td>${fmt(wm * x + wb)}</td>`)}</tr>
+  </tbody></table>`);
+}
+```
 
 Eine Spalte enthält die beiden Zahlen für **einen Punkt (x | y)**. Trage alle Punkte in das Koordinatensystem ein.
 
@@ -140,178 +151,14 @@ Verbinde die Punkte mit dem Lineal. So entsteht die Gerade.
 
 ---
 
-## 3. Das Steigungsdreieck
+## 3. Die Geradengleichung an der Zeichnung erkennen
 
-Die Regler sind mit den Reglern oben verbunden.
-
-```js
-display(Inputs.bind(Inputs.range([-3, 3], {step: 0.5, label: "m – Steigung"}), wmInput));
-```
-
-```js
-display(Inputs.bind(Inputs.range([-3, 3], {step: 1, label: "b – y-Achsenabschnitt"}), wbInput));
-```
-
-Unsere Gerade lautet gerade: **y = ${String(wm).replace(".", ",")} · x ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")}**
-
-Die Wertetabelle:
-
-```js
-{
-  const fmt = (n) => String(n).replace(".", ",");
-  const xs = [-2, -1, 0, 1, 2];
-  const keys = xs.map((_, i) => `p${i}`);
-  const zeileX = {"": "x"};
-  const zeileY = {"": "y"};
-  xs.forEach((x, i) => {
-    zeileX[keys[i]] = fmt(x);
-    zeileY[keys[i]] = fmt(wm * x + wb);
-  });
-  const header = {"": ""};
-  keys.forEach((k) => (header[k] = ""));
-  display(Inputs.table([zeileX, zeileY], {header}));
-}
-```
-
-Wird x um **1** größer, ändert sich y um **m**:
+Das Steigungsdreieck und den y-Achsenabschnitt findest du auf der Seite [Steigungsdreieck](./steigungsdreieck).
 
 ```js
 const fmtW = (n) => String(n).replace(".", ",");
 ```
 
-```js
-{
-  display(Inputs.table(
-    [-2, -1, 0, 1].map((x) => {
-      const yVon = wm * x + wb;
-      const yAuf = wm * (x + 1) + wb;
-      return {
-        "x geht von": fmtW(x),
-        "auf": fmtW(x + 1),
-        "y geht von": fmtW(yVon),
-        "auf ": fmtW(yAuf),
-        "also Änderung um": fmtW(yAuf - yVon)
-      };
-    })
-  ));
-}
-```
-
-Für ein **Steigungsdreieck** gehst du von einem Punkt der Geraden 1 nach rechts. Gehe dann nach oben oder unten, bis du wieder auf der Geraden bist. Die Änderung in y-Richtung ist m.
-
-Die Zeichnung zeigt zwei Steigungsdreiecke an verschiedenen Stellen:
-
-```js
-{
-  const fmt = (n) => String(n).replace(".", ",");
-  const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: wm * x + wb}));
-
-  // Dreieck 1: zwischen x = -2 und x = -1
-  const a1 = {x: -2, y: wm * -2 + wb};
-  const a2 = {x: -1, y: wm * -2 + wb};
-  const a3 = {x: -1, y: wm * -1 + wb};
-
-  // Dreieck 2: zwischen x = 1 und x = 2 (andere Stelle der Geraden)
-  const b1 = {x: 1, y: wm * 1 + wb};
-  const b2 = {x: 2, y: wm * 1 + wb};
-  const b3 = {x: 2, y: wm * 2 + wb};
-
-  const richtung = wm >= 0 ? "oben" : "unten";
-
-  display(koordinatensystem(Plot, {
-    width,
-    aspectRatio: 1,
-    x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
-    y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
-    marks: [
-      Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
-
-      // Dreieck 1
-      Plot.line([a1, a2], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
-      Plot.line([a2, a3], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),
-      Plot.dot([a1, a3], {x: "x", y: "y", r: 5, fill: "black"}),
-
-      // Dreieck 2 (andere Stelle)
-      Plot.line([b1, b2], {x: "x", y: "y", stroke: "#f59e0b", strokeWidth: 4}),
-      Plot.line([b2, b3], {x: "x", y: "y", stroke: "#16a34a", strokeWidth: 4}),
-      Plot.dot([b1, b3], {x: "x", y: "y", r: 5, fill: "black"}),
-
-      Plot.text([{x: a1.x + 0.5, y: a1.y - 0.6, t: "1 nach rechts"}], {x: "x", y: "y", text: "t", fontSize: 11}),
-      Plot.text([{x: b1.x + 0.5, y: b1.y - 0.6, t: "1 nach rechts"}], {x: "x", y: "y", text: "t", fontSize: 11}),
-      Plot.text([{x: a3.x + 0.4, y: (a2.y + a3.y) / 2, t: wm === 0 ? "0" : `${fmt(Math.abs(wm))} nach ${richtung}`}], {x: "x", y: "y", text: "t", fontSize: 11, fontWeight: "bold"}),
-      Plot.text([{x: b3.x + 0.4, y: (b2.y + b3.y) / 2, t: wm === 0 ? "0" : `${fmt(Math.abs(wm))} nach ${richtung}`}], {x: "x", y: "y", text: "t", fontSize: 11, fontWeight: "bold"})
-    ]
-  }));
-}
-```
-
-- **Orange:** 1 nach rechts.
-- **Grün:** ${wm === 0 ? "keine Änderung nach oben oder unten" : `${String(Math.abs(wm)).replace(".", ",")} nach ${wm > 0 ? "oben" : "unten"}`}.
-
-Beide Dreiecke zeigen dieselbe Steigung: **m = ${String(wm).replace(".", ",")}**. Das gilt an jeder Stelle der Geraden.
-
----
-
-## 4. Der y-Achsenabschnitt
-
-Die Regler sind mit den Reglern oben verbunden.
-
-```js
-display(Inputs.bind(Inputs.range([-3, 3], {step: 0.5, label: "m – Steigung"}), wmInput));
-```
-
-```js
-display(Inputs.bind(Inputs.range([-3, 3], {step: 1, label: "b – y-Achsenabschnitt"}), wbInput));
-```
-
-Unsere Gerade lautet gerade: **y = ${String(wm).replace(".", ",")} · x ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")}**
-
-In der Tabelle steht unter **x = 0** der Wert **b**.
-
-```js
-{
-  const fmt = (n) => String(n).replace(".", ",");
-  const xs = [-2, -1, 0, 1, 2];
-  const keys = xs.map((_, i) => `p${i}`);
-  const zeileX = {"": "x"};
-  const zeileY = {"": "y"};
-  xs.forEach((x, i) => {
-    zeileX[keys[i]] = fmt(x);
-    zeileY[keys[i]] = fmt(wm * x + wb);
-  });
-  const header = {"": "", p0: "", p1: "", p2: "x = 0 → hier steht b", p3: "", p4: ""};
-  display(Inputs.table([zeileX, zeileY], {header}));
-}
-```
-
-Setze bei der aktuellen Geraden **x = 0** ein:
-
-**y = ${String(wm).replace(".", ",")} · 0 ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")} = 0 ${wb >= 0 ? "+" : "−"} ${String(Math.abs(wb)).replace(".", ",")} = ${String(wb).replace(".", ",")}**
-
-Der Schnittpunkt mit der y-Achse ist **(0 | ${String(wb).replace(".", ",")})**. Allgemein ist er **(0 | b)**.
-
-Ändere nur **m**: Die Gerade dreht sich um den orangen Punkt. Ändere nur **b**: Die Gerade und der Punkt verschieben sich nach oben oder unten.
-
-```js
-{
-  const linie = d3.range(-6, 6.05, 0.1).map((x) => ({x, y: wm * x + wb}));
-  display(koordinatensystem(Plot, {
-    width,
-    aspectRatio: 1,
-    x: {domain: [-6, 6], label: "x →", grid: true, ticks: 13},
-    y: {domain: [-8, 8], label: "↑ y", grid: true, ticks: 17},
-    marks: [
-      Plot.line(linie, {x: "x", y: "y", stroke: "#2563eb", strokeWidth: 3}),
-      Plot.dot([{x: 0, y: wb}], {x: "x", y: "y", r: 9, fill: "#f59e0b", stroke: "black"}),
-      Plot.text([{x: 0, y: wb, t: `(0 | ${String(wb).replace(".", ",")})`}], {x: "x", y: "y", text: "t", dx: 30, dy: -10, fontSize: 13, fontWeight: "bold"})
-    ]
-  }));
-}
-```
-
----
-
-## 5. Die Geradengleichung an der Zeichnung erkennen
 
 Bestimme m und b aus der Zeichnung. Mit dem Button erhältst du eine neue Gerade.
 

@@ -9,8 +9,10 @@ export default {
       pages: [
         {name: "Start", path: "/index"},
         {name: "Geradengleichungen", path: "/geradengleichungen"},
+        {name: "Steigungsdreieck", path: "/steigungsdreieck"},
         {name: "Parabeln zeichnen", path: "/parabeln-zeichnen"},
-        {name: "Achsenschnittpunkte", path: "/achsenschnittpunkte"},
+        {name: "Schnittpunkt mit der y-Achse", path: "/achsenschnittpunkte"},
+        {name: "Schnittpunkt mit der x-Achse", path: "/achsenschnittpunkte-x"},
         {name: "Punktprobe", path: "/punktprobe"},
         {name: "Parallele Geraden", path: "/parallele-geraden"},
         {name: "Schnittpunkte von Geraden", path: "/schnittpunkte-geraden"},

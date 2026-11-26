@@ -5,24 +5,11 @@ toc: true
 
 # Parallele Geraden
 
-Wir vergleichen zwei Geraden. Stelle ihre Steigungen und y-Achsenabschnitte ein. Die Gleichungen, die Tabelle und die Zeichnung ändern sich mit.
+Wir vergleichen diese beiden Geraden:
 
 ```js
 import * as Inputs from "npm:@observablehq/inputs";
 import {koordinatensystem} from "./koordinatensystem.js";
-```
-
-```js
-const fm = view(Inputs.range([-3, 3], {value: 2, step: 1, label: "Steigung von f"}));
-```
-```js
-const fb = view(Inputs.range([-4, 4], {value: -3, step: 1, label: "y-Achsenabschnitt von f"}));
-```
-```js
-const gm = view(Inputs.range([-3, 3], {value: 2, step: 1, label: "Steigung von g"}));
-```
-```js
-const gb = view(Inputs.range([-4, 4], {value: -1, step: 1, label: "y-Achsenabschnitt von g"}));
 ```
 
 ```js
@@ -48,9 +35,13 @@ Die Tabelle zeigt die y-Werte beider Geraden. Die letzte Zeile zeigt ihren **sen
 }
 ```
 
+Bei **x = 0** ist der y-Wert von f **${fb}** und der y-Wert von g **${gb}**. Der senkrechte Abstand ist **${Math.max(fb, gb)} − (${Math.min(fb, gb)}) = ${Math.abs(fb - gb)}**.
+
 ## 2. Die Steigungen vergleichen
 
-${fm === gm ? (fb === gb ? "Beide Geraden haben dieselbe Steigung und denselben y-Achsenabschnitt. Sie liegen genau aufeinander und haben unendlich viele gemeinsame Punkte." : "Beide Geraden haben dieselbe Steigung, aber verschiedene y-Achsenabschnitte. Sie sind parallel und haben keinen Schnittpunkt. Ihr senkrechter Abstand bleibt gleich.") : "Die Steigungen sind verschieden. Die Geraden schneiden sich in genau einem Punkt. Ihr senkrechter Abstand ändert sich; am Schnittpunkt ist er null."}
+Die Steigung von f ist **${fm}**, die Steigung von g ist **${gm}**.
+
+${fm === gm ? (fb === gb ? "Die Steigungen und y-Achsenabschnitte sind gleich. Die Geraden liegen aufeinander." : "Die Steigungen sind gleich, die y-Achsenabschnitte verschieden. Die Geraden sind parallel und schneiden sich nicht. Ihr senkrechter Abstand bleibt gleich.") : "Die Steigungen sind verschieden. Die Geraden schneiden sich in einem Punkt. Dort ist ihr senkrechter Abstand null."}
 
 ## 3. Die Zeichnung
 
@@ -71,3 +62,26 @@ ${fm === gm ? (fb === gb ? "Beide Geraden haben dieselbe Steigung und denselben 
   }));
 }
 ```
+
+## Das Beispiel verändern
+
+Ändere die Werte mit den Reglern. Die Tabelle und die Zeichnung ändern sich mit.
+
+```js
+const fm = view(Inputs.range([-3, 3], {value: 2, step: 1, label: "Steigung von f"}));
+```
+```js
+const fb = view(Inputs.range([-4, 4], {value: -3, step: 1, label: "y-Achsenabschnitt von f"}));
+```
+```js
+const gm = view(Inputs.range([-3, 3], {value: 2, step: 1, label: "Steigung von g"}));
+```
+```js
+const gb = view(Inputs.range([-4, 4], {value: -1, step: 1, label: "y-Achsenabschnitt von g"}));
+```
+
+## Allgemein
+
+- Gleiche Steigung, verschiedene y-Achsenabschnitte: Die Geraden sind parallel und haben keinen Schnittpunkt.
+- Gleiche Steigung, gleicher y-Achsenabschnitt: Die Geraden liegen aufeinander und haben unendlich viele gemeinsame Punkte.
+- Verschiedene Steigungen: Die Geraden schneiden sich in genau einem Punkt.
